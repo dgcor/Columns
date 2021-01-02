@@ -1,0 +1,9 @@
+{
+  "audio": {
+    "id": "main",
+    "file": "bgm/03 - Clotho.ogg",
+    "loopPoints": { "offset": 0, "length": 89.50 },
+    "loop": true,
+    "play": true
+  }
+}

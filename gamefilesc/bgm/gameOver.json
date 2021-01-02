@@ -1,0 +1,8 @@
+{
+  "audio": {
+    "id": "gameOver",
+    "file": "bgm/12 - Concilation (Game Over).ogg",
+    "loop": false,
+    "play": true
+  }
+}

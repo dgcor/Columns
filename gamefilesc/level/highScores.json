@@ -1,0 +1,18 @@
+{
+  "level": {
+    "highScores": [
+      {
+        "name": "Sonic",
+        "level": 10,
+        "score": 50000,
+        "jewels": 1320
+      },
+      {
+        "name": "Knuckles",
+        "level": 8,
+        "score": 42000,
+        "jewels": 1200
+      }
+    ]
+  }
+}

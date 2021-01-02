@@ -1,0 +1,10 @@
+{
+  "load": "level/baseLevel2.json",
+  "load": "level/levelOptionsArcade.json",
+  "load": "level/highScores.json",
+  "load": "level/jewelClasses.json",
+  "load": "level/baseLevel1.json",
+  "load": "level/levelOptionsArcade.json",
+  "load": "level/highScores.json",
+  "load": "level/jewelClasses.json"
+}

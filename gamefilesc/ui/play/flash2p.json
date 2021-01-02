@@ -1,0 +1,176 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "play",
+    "ignorePrevious": true
+  },
+  "inputEvent": [
+    {
+      "key": "esc",
+      "action": [
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "key": [" ", "rshift"],
+      "action": { "name": "level.rotateJewels" }
+    },
+    {
+      "key": "down",
+      "event": "level.down"
+    },
+    {
+      "key": "left",
+      "event": "level.left"
+    },
+    {
+      "key": "right",
+      "event": "level.right"
+    },
+    {
+      "key": ["h", "lshift"],
+      "action": { "name": "level.rotateJewels", "level": "level2" }
+    },
+    {
+      "key": "s",
+      "event": "level2.down"
+    },
+    {
+      "key": "a",
+      "event": "level2.left"
+    },
+    {
+      "key": "d",
+      "event": "level2.right"
+    }
+  ],
+  "replaceVars": "value",
+  "texture": { "file": "gfx|scale|x/flash2p.png" },
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "flash2p",
+    "captureInputEvents": true
+  },
+  "text": [
+    {
+      "id": "txtBestLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 144|", "|$.#scale * 124|"],
+      "anchor": "none",
+      "text": "Best"
+    },
+    {
+      "id": "txtLevelLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 140|", "|$.#scale * 164|"],
+      "anchor": "none",
+      "text": "Level"
+    },
+    {
+      "id": "txtClassLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 140|", "|$.#scale * 196|"],
+      "anchor": "none",
+      "text": "Class"
+    },
+    {
+      "id": "txtTime",
+      "font": "font4Cyan",
+      "position": ["|$.#scale * 161|", "|$.#scale * 65|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%level.timer.MMSS%"
+    },
+    {
+      "id": "txtBest",
+      "font": "font3",
+      "position": ["|$.#scale * 160|", "|$.#scale * 112|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "text": "0:00"
+    },
+    {
+      "id": "txtLevel",
+      "font": "font3",
+      "position": ["|$.#scale * 144|", "|$.#scale * 152|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%level.level%"
+    },
+    {
+      "id": "txtClass",
+      "font": "font3",
+      "position": ["|$.#scale * 144|", "|$.#scale * 184|"],
+      "anchor": "none",
+      "horizontalAlign": "right"
+    },
+    {
+      "id": "txtTimeP2",
+      "font": "font4Cyan",
+      "position": ["|$.#scale * 201|", "|$.#scale * 89|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%level2.timer.MMSS%"
+    },
+    {
+      "id": "txtBestP2",
+      "font": "font3",
+      "position": ["|$.#scale * 200|", "|$.#scale * 136|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "text": "0:00"
+    },
+    {
+      "id": "txtLevelP2",
+      "font": "font3",
+      "position": ["|$.#scale * 200|", "|$.#scale * 176|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%level2.level%"
+    },
+    {
+      "id": "txtClassP2",
+      "font": "font3",
+      "position": ["|$.#scale * 200|", "|$.#scale * 208|"],
+      "anchor": "none",
+      "horizontalAlign": "right"
+    }
+  ],
+  "action": [
+    {
+      "name": "switch",
+      "param": "%gameClass%",
+      "case": [
+        { "value": "novice", "action": { "name": "text.setText", "id": "txtClass", "text": "nov" } },
+        { "value": "amateur", "action": { "name": "text.setText", "id": "txtClass", "text": "ama" } },
+        { "value": "pro", "action": { "name": "text.setText", "id": "txtClass", "text": "pro" } }
+      ]
+    },
+    {
+      "name": "switch",
+      "param": "%gameClassP2%",
+      "case": [
+        { "value": "novice", "action": { "name": "text.setText", "id": "txtClassP2", "text": "nov" } },
+        { "value": "amateur", "action": { "name": "text.setText", "id": "txtClassP2", "text": "ama" } },
+        { "value": "pro", "action": { "name": "text.setText", "id": "txtClassP2", "text": "pro" } }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "startGame",
+      "action": { "name": "level.newGame", "type": "flash", "height": "|gameHeight|" }
+    },
+    {
+      "name": "action.set",
+      "id": "startGame2",
+      "action": { "name": "level.newGame", "level": "level2", "type": "flash", "height": "|gameHeightP2|" }
+    }
+  ],
+  "load": "level/load2.json",
+  "load": "ui/play/pause1.json",
+  "load": "ui/play/pause2.json",
+  "load": "ui/play/gameStart1.json",
+  "load": "ui/play/gameStart2.json"
+}

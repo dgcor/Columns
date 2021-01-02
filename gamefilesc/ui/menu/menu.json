@@ -1,0 +1,125 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "menu",
+    "ignorePrevious": true
+  },
+  "inputEvent": [
+    {
+      "key": "esc",
+      "action": { "name": "resource.pop" }
+    },
+    {
+      "key": "left",
+      "action": {
+        "name": ">",
+        "param1": "%menu.currentIdx%",
+        "param2": 2,
+        "then": {
+          "name": "menu.setIndex",
+          "id": "menu",
+          "index": "%$.menu.currentIdx - 3%",
+          "focus": true
+        }
+      }
+    },
+    {
+      "key": "right",
+      "action": {
+        "name": "<=",
+        "param1": "%menu.currentIdx%",
+        "param2": 2,
+        "then": {
+          "name": "menu.setIndex",
+          "id": "menu",
+          "index": "%$.menu.currentIdx + 3%",
+          "focus": true
+        }
+      }
+    }
+  ],
+  "load": "bgm/select.json",
+  "replaceVars": "value",
+  "texture": { "file": "gfx|scale|x/options.png" },
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "options",
+    "captureInputEvents": true
+  },
+  "text": [
+    {
+      "id": "txtMenu",
+      "font": "font1White",
+      "position": ["center", "|$.#scale * 32|"],
+      "anchor": "none",
+      "text": "Menu"
+    },
+    {
+      "id": "txtOriginal",
+      "font": "font1Yellow",
+      "position": ["|$.#scale * 48|", "|$.#scale * 64|"],
+      "anchor": "none",
+      "text": "Original Game"
+    },
+    {
+      "id": "txtFlash",
+      "font": "font1Yellow",
+      "position": ["|$.#scale * 168|", "|$.#scale * 64|"],
+      "anchor": "none",
+      "text": "Flash Columns"
+    },
+    {
+      "id": "arrow",
+      "font": "font1Cyan",
+      "position": ["|$.#scale * 48|", "|$.#scale * 88|"],
+      "anchor": "none",
+      "text": "["
+    }
+  ],
+  "menu": {
+    "id": "menu",
+    "font": "font1White",
+    "position": ["|$.#scale * 48|", "|$.#scale * 40|"],
+    "focus": true,
+    "anchor": "none",
+    "items": [
+      {
+        "position": ["|$.#scale * 64|", "|$.#scale * 88|"],
+        "text": "1 Player",
+        "onClick": { "name": "load", "file": "ui/menu/original.json" },
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 64|", "|$.#scale * 112|"],
+        "text": "2 Players",
+        "onClick": { "name": "load", "file": "ui/menu/original2p.json" },
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 64|", "|$.#scale * 136|"],
+        "text": "Doubles",
+        "onClick": { "name": "load", "file": "ui/menu/originalDoubles.json" },
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 184|", "|$.#scale * 88|"],
+        "text": "1 Player",
+        "onClick": { "name": "load", "file": "ui/menu/flash.json" },
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 184|", "|$.#scale * 112|"],
+        "text": "2 Players",
+        "onClick": { "name": "load", "file": "ui/menu/flash2p.json" },
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 184|", "|$.#scale * 136|"],
+        "text": "Doubles",
+        "onClick": { "name": "load", "file": "ui/menu/flashDoubles.json" },
+        "onFocus": "anchorArrow"
+      }
+    ]
+  }
+}

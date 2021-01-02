@@ -1,0 +1,19 @@
+{
+  "replaceVars": "value",
+  "texture": [
+    { "file": "gfx|scale|x/main1.png" },
+    { "file": "gfx|scale|x/main2.png" },
+    { "file": "gfx|scale|x/mainMenu.png" },
+    { "file": "gfx|scale|x/pressStart.png" }
+  ],
+  "texturePack": [
+    {
+      "id": "pressStart",
+      "texture": "pressStart",
+      "rects": [
+        { "rect": [0, 0, "|$.#scale * 132|", "|$.#scale * 8|"] },
+        { "rect": ["|$.#scale * 4|", "|$.#scale * 7|", 1, 1] }
+      ]
+    }
+  ]
+}

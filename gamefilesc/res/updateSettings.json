@@ -1,0 +1,59 @@
+{
+  "action": [
+    {
+      "name": "switch",
+      "param": "%scale%",
+      "case": [
+        {
+          "value": 2,
+          "action": {
+            "name": "loadJson",
+            "json": {
+              "refWindowSize": [640, 448],
+              "minWindowSize": [640, 448],
+              "windowSize": [640, 448]
+            }
+          }
+        },
+        {
+          "value": 3,
+          "action": {
+            "name": "loadJson",
+            "json": {
+              "refWindowSize": [960, 672],
+              "minWindowSize": [960, 672],
+              "windowSize": [960, 672]
+            }
+          }
+        },
+        {
+          "value": 4,
+          "action": {
+            "name": "loadJson",
+            "json": {
+              "refWindowSize": [1280, 896],
+              "minWindowSize": [1280, 896],
+              "windowSize": [1280, 896]
+            }
+          }
+        }
+      ],
+      "default": [
+        { "name": "variable.set", "key": "scale", "value": 1 },
+        {
+          "name": "loadJson",
+          "json": {
+            "refWindowSize": [320, 224],
+            "minWindowSize": [320, 224],
+            "windowSize": [640, 448]
+          }
+        }
+      ]
+    },
+    { "name": "variable.setIfNull", "key": "shader", "value": "default" },
+    { "name": "variable.setIfNull", "key": "difficultyArcade", "value": "normal" },
+    { "name": "variable.setIfNull", "key": "seNo", "value": 1 }
+  ],
+  "replaceVars": "value",
+  "load": "res/shaders/|shader|.json"
+}

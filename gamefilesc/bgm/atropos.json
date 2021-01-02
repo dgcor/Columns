@@ -1,0 +1,8 @@
+{
+  "audio": {
+    "id": "main",
+    "file": "bgm/09 - Atropos.ogg",
+    "loop": true,
+    "play": true
+  }
+}

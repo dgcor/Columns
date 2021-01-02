@@ -1,0 +1,18 @@
+{
+  "load": "bgm/gameOver.json",
+  "load": "ui/play/overlay.json",
+  "action": [
+    { "name": "audio.stop", "id": "main" },
+    { "name": "audio.play", "id": "gameOver" }
+  ],
+  "replaceVars": "value",
+  "text": {
+    "id": "txtGameOver",
+    "panel": "overlay",
+    "font": "font3",
+    "position": ["|$.#scale * 28|", "|$.#scale * 96|"],
+    "anchor": "none",
+    "text": "Game Over"
+  },
+  "load": "ui/play/pressStart1.json"
+}

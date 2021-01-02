@@ -1,0 +1,113 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "play",
+    "ignorePrevious": true
+  },
+  "inputEvent": [
+    {
+      "key": "esc",
+      "action": [
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "key": [" ", "rshift"],
+      "action": { "name": "level.rotateJewels" }
+    },
+    {
+      "key": "down",
+      "event": "level.down"
+    },
+    {
+      "key": "left",
+      "event": "level.left"
+    },
+    {
+      "key": "right",
+      "event": "level.right"
+    }
+  ],
+  "replaceVars": "value",
+  "texture": { "file": "gfx|scale|x/flash1p.png" },
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "flash1p",
+    "captureInputEvents": true
+  },
+  "text": [
+    {
+      "id": "txtBestLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 48|", "|$.#scale * 124|"],
+      "anchor": "none",
+      "text": "Best"
+    },
+    {
+      "id": "txtLevelLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 44|", "|$.#scale * 164|"],
+      "anchor": "none",
+      "text": "Level"
+    },
+    {
+      "id": "txtClassLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 44|", "|$.#scale * 196|"],
+      "anchor": "none",
+      "text": "Class"
+    },
+    {
+      "id": "txtTime",
+      "font": "font4Cyan",
+      "position": ["|$.#scale * 105|", "|$.#scale * 89|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%currentLevel.timer.MMSS%"
+    },
+    {
+      "id": "txtBest",
+      "font": "font3",
+      "position": ["|$.#scale * 104|", "|$.#scale * 136|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "text": "0:00"
+    },
+    {
+      "id": "txtLevel",
+      "font": "font3",
+      "position": ["|$.#scale * 104|", "|$.#scale * 176|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%currentLevel.level%"
+    },
+    {
+      "id": "txtClass",
+      "font": "font3",
+      "position": ["|$.#scale * 104|", "|$.#scale * 208|"],
+      "anchor": "none",
+      "horizontalAlign": "right"
+    }
+  ],
+  "action": [
+    {
+      "name": "switch",
+      "param": "%gameClass%",
+      "case": [
+        { "value": "novice", "action": { "name": "text.setText", "id": "txtClass", "text": "nov" } },
+        { "value": "amateur", "action": { "name": "text.setText", "id": "txtClass", "text": "ama" } },
+        { "value": "pro", "action": { "name": "text.setText", "id": "txtClass", "text": "pro" } }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "startGame",
+      "action": { "name": "level.newGame", "type": "flash", "height": "|gameHeight|" }
+    }
+  ],
+  "load": "level/load.json",
+  "load": "ui/play/pause.json",
+  "load": "ui/play/gameStart.json"
+}

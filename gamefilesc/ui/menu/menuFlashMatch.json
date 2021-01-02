@@ -1,0 +1,294 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "menuFlashMatch",
+    "ignorePrevious": true
+  },
+  "load": "ui/menu/commonFlashMatch.json",
+  "inputEvent": [
+    {
+      "key": "esc",
+      "action": { "name": "resource.pop" }
+    },
+    {
+      "key": "enter",
+      "action": "newGame"
+    },
+    {
+      "key": "left",
+      "action": "prevOptionFlashMatch"
+    },
+    {
+      "key": "right",
+      "action": "nextOptionFlashMatch"
+    },
+    {
+      "key": "up",
+      "action": "upOptionFlashMatch"
+    },
+    {
+      "key": "down",
+      "action": "downOptionFlashMatch"
+    },
+    {
+      "key": "a",
+      "action": "prevOptionFlashMatchP2"
+    },
+    {
+      "key": "d",
+      "action": "nextOptionFlashMatchP2"
+    },
+    {
+      "key": "w",
+      "action": "upOptionFlashMatchP2"
+    },
+    {
+      "key": "s",
+      "action": "downOptionFlashMatchP2"
+    }
+  ],
+  "replaceVars": "value",
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "options",
+    "captureInputEvents": true
+  },
+  "menu": [
+    {
+      "id": "menu",
+      "font": "font1Yellow",
+      "position": ["|$.#scale * 48|", "|$.#scale * 40|"],
+      "anchor": "none",
+      "items": [
+        {
+          "position": ["|$.#scale * 40|", "|$.#scale * 24|"],
+          "text": "Class"
+        },
+        {
+          "position": ["|$.#scale * 40|", "|$.#scale * 72|"],
+          "text": "Height"
+        },
+        {
+          "position": ["|$.#scale * 40|", "|$.#scale * 120|"],
+          "text": "Match"
+        },
+        {
+          "position": ["|$.#scale * 40|", "|$.#scale * 168|"],
+          "text": "BGM"
+        }
+      ]
+    },
+    {
+      "id": "menuP2",
+      "font": "font1Yellow",
+      "position": ["|$.#scale * 48|", "|$.#scale * 40|"],
+      "anchor": "none",
+      "items": [
+        { "text": "" },
+        { "text": "" }
+      ]
+    }
+  ],
+  "button": [
+    {
+      "id": "btnClassNovice",
+      "font": "font1White",
+      "position": ["|$.#scale * 72|", "|$.#scale * 48|"],
+      "anchor": "none",
+      "text": "Novice",
+      "onClick": "selectClassNovice",
+      "onRightClick": "selectClassNoviceP2"
+    },
+    {
+      "id": "btnClassAmateur",
+      "font": "font1White",
+      "position": ["|$.#scale * 144|", "|$.#scale * 48|"],
+      "anchor": "none",
+      "text": "Amateur",
+      "onClick": "selectClassAmateur",
+      "onRightClick": "selectClassAmateurP2"
+    },
+    {
+      "id": "btnClassPro",
+      "font": "font1White",
+      "position": ["|$.#scale * 224|", "|$.#scale * 48|"],
+      "anchor": "none",
+      "text": "Pro",
+      "onClick": "selectClassPro",
+      "onRightClick": "selectClassProP2"
+    },
+    {
+      "id": "btnHeight2",
+      "font": "font1White",
+      "position": ["|$.#scale * 72|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "2 ",
+      "onClick": "selectHeight2",
+      "onRightClick": "selectHeight2P2"
+    },
+    {
+      "id": "btnHeight3",
+      "font": "font1White",
+      "position": ["|$.#scale * 88|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "3 ",
+      "onClick": "selectHeight3",
+      "onRightClick": "selectHeight3P2"
+    },
+    {
+      "id": "btnHeight4",
+      "font": "font1White",
+      "position": ["|$.#scale * 104|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "4 ",
+      "onClick": "selectHeight4",
+      "onRightClick": "selectHeight4P2"
+    },
+    {
+      "id": "btnHeight5",
+      "font": "font1White",
+      "position": ["|$.#scale * 120|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "5 ",
+      "onClick": "selectHeight5",
+      "onRightClick": "selectHeight5P2"
+    },
+    {
+      "id": "btnHeight6",
+      "font": "font1White",
+      "position": ["|$.#scale * 136|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "6 ",
+      "onClick": "selectHeight6",
+      "onRightClick": "selectHeight6P2"
+    },
+    {
+      "id": "btnHeight7",
+      "font": "font1White",
+      "position": ["|$.#scale * 152|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "7 ",
+      "onClick": "selectHeight7",
+      "onRightClick": "selectHeight7P2"
+    },
+    {
+      "id": "btnHeight8",
+      "font": "font1White",
+      "position": ["|$.#scale * 168|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "8 ",
+      "onClick": "selectHeight8",
+      "onRightClick": "selectHeight8P2"
+    },
+    {
+      "id": "btnHeight9",
+      "font": "font1White",
+      "position": ["|$.#scale * 184|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "9 ",
+      "onClick": "selectHeight9",
+      "onRightClick": "selectHeight9P2"
+    },
+    {
+      "id": "btnMatchNo",
+      "font": "font1White",
+      "position": ["|$.#scale * 72|", "|$.#scale * 144|"],
+      "anchor": "none",
+      "text": "No",
+      "onClick": "selectMatchNo"
+    },
+    {
+      "id": "btnMatchYes",
+      "font": "font1White",
+      "position": ["|$.#scale * 112|", "|$.#scale * 144|"],
+      "anchor": "none",
+      "text": "Yes",
+      "onClick": "selectMatchYes"
+    },
+    {
+      "id": "btnBGMClotho",
+      "font": "font1White",
+      "position": ["|$.#scale * 72|", "|$.#scale * 192|"],
+      "anchor": "none",
+      "text": "Clotho",
+      "onClick": "selectBGMClotho"
+    },
+    {
+      "id": "btnBGMLathesis",
+      "font": "font1White",
+      "position": ["|$.#scale * 152|", "|$.#scale * 192|"],
+      "anchor": "none",
+      "text": "Lathesis",
+      "onClick": "selectBGMLathesis"
+    },
+    {
+      "id": "btnBGMAtropos",
+      "font": "font1White",
+      "position": ["|$.#scale * 232|", "|$.#scale * 192|"],
+      "anchor": "none",
+      "text": "Atropos",
+      "onClick": "selectBGMAtropos"
+    }
+  ],
+  "animation": [
+    {
+      "id": "animClassPlayer1",
+      "texturePack": "player1",
+      "position": ["|$.#scale * 72|", "|$.#scale * 40|"],
+      "anchor": "none",
+      "refresh": 60
+    },
+    {
+      "id": "animClassPlayer2",
+      "texturePack": "player2",
+      "position": ["|$.#scale * 72|", "|$.#scale * 56|"],
+      "anchor": "none",
+      "refresh": 60,
+      "visible": "|player2|"
+    },
+    {
+      "id": "animHeightPlayer1",
+      "texturePack": "player1",
+      "position": ["|$.#scale * 72|", "|$.#scale * 88|"],
+      "anchor": "none",
+      "refresh": 60,
+      "pause": true
+    },
+    {
+      "id": "animHeightPlayer2",
+      "texturePack": "player2",
+      "position": ["|$.#scale * 72|", "|$.#scale * 104|"],
+      "anchor": "none",
+      "refresh": 60,
+      "pause": true,
+      "visible": "|player2|"
+    },
+    {
+      "id": "animMatch",
+      "texturePack": "select",
+      "position": ["|$.#scale * 72|", "|$.#scale * 136|"],
+      "anchor": "none",
+      "color": "0xA0A000",
+      "refresh": 60,
+      "pause": true
+    },
+    {
+      "id": "animBGM",
+      "texturePack": "select",
+      "position": ["|$.#scale * 72|", "|$.#scale * 184|"],
+      "anchor": "none",
+      "color": "0xA0A000",
+      "refresh": 60,
+      "pause": true
+    }
+  ],
+  "action": [
+    "updateBGM",
+    "updateMatch",
+    "updateHeight",
+    "updateHeightP2",
+    "updateClass",
+    "updateClassP2"
+  ]
+}

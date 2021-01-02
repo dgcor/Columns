@@ -1,0 +1,38 @@
+{
+  "load": "ui/play/overlay.json",
+  "action": [
+    { "name": "level.pause", "pause": true },
+    { "name": "drawable.visible", "id": "level", "visible": false }
+  ],
+  "inputEvent": {
+    "key": "enter",
+    "action": [
+      { "name": "level.pause", "pause": false },
+      { "name": "drawable.visible", "id": "level", "visible": true },
+      { "name": "drawable.delete", "id": "txtGameOver" },
+      { "name": "drawable.delete", "id": "txtPress" },
+      { "name": "drawable.delete", "id": "txtStartButton" },
+      { "name": "audio.stop", "id": "gameOver" },
+      { "name": "load", "file": "ui/play/gameStart.json" }
+    ]
+  },
+  "replaceVars": "value",
+  "text": [
+    {
+      "id": "txtPress",
+      "panel": "overlay",
+      "font": "font3",
+      "position": ["|$.#scale * 136|", "|$.#scale * 112|"],
+      "anchor": "none",
+      "text": "Press"
+    },
+    {
+      "id": "txtStartButton",
+      "panel": "overlay",
+      "font": "font3",
+      "position": ["|$.#scale * 112|", "|$.#scale * 128|"],
+      "anchor": "none",
+      "text": "Start Button"
+    }
+  ]
+}

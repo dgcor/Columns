@@ -1,0 +1,28 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "colorTest",
+    "ignorePrevious": true
+  },
+  "inputEvent": {
+    "key": "esc",
+    "action": { "name": "resource.pop" }
+  },
+  "replaceVars": "value",
+  "texture": { "file": "gfx|scale|x/colorTest.png" },
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "colorTest",
+    "captureInputEvents": true,
+    "focus": true,
+    "onClick": { "name": "resource.pop" }
+  },
+  "text": {
+    "id": "txtColorText",
+    "font": "font1White",
+    "position": ["center", "|$.#scale * 16|"],
+    "anchor": "none",
+    "text": "Color Test"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "icon": {
+    "file": "res/icon.png"
+  },
+  "load": "res/actions.json",
+  "load": "res/textures.json",
+  "load": "res/fonts.json",
+  "load": "ui/mainMenu.json"
+}

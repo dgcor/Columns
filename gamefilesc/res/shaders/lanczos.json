@@ -1,0 +1,9 @@
+{
+  "shader": {
+    "id": "lanczos",
+    "fragmentFile": "res/shaders/lanczos.frag",
+    "vertexFile": "res/shaders/lanczos.vert",
+    "uniforms": ["fade", "gamma", "textureSize"],
+    "setShader": "game"
+  }
+}

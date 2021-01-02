@@ -1,0 +1,92 @@
+{
+  "action": {
+    "name": "action.set",
+    "id": "pauseGame2",
+    "action": {
+      "name": "if.equal",
+      "param1": "%level2.pause%",
+      "param2": true,
+      "then": [
+        { "name": "level.pause", "level": "level2", "pause": false },
+        { "name": "event.delete", "id": "pauseOverlay2" },
+        { "name": "drawable.visible", "id": "pauseOverlay2", "visible": false }
+      ],
+      "else": [
+        { "name": "level.pause", "level": "level2", "pause": true },
+        {
+          "name": "if.equal",
+          "param1": "%game.hasEvent.pauseOverlay2%",
+          "param2": false,
+          "then": {
+            "name": "event.add",
+            "id": "pauseOverlay2",
+            "time": 300,
+            "action": {
+              "name": "if.equal",
+              "param1": true,
+              "param2": false,
+              "else": { "name": "drawable.toggleVisible", "id": "pauseOverlay2" }
+            }
+          },
+          "else": { "name": "event.resetTime", "id": "pauseOverlay2" }
+        },
+        { "name": "drawable.visible", "id": "overlay", "visible": true }
+      ]
+    }
+  },
+  "panel": {
+    "id": "pauseOverlay2",
+    "visible": false
+  },
+  "replaceVars": "value",
+  "rectangle": [
+    {
+      "id": "borderPause2",
+      "panel": "pauseOverlay2",
+      "position": ["|$.#scale * 232|", "|$.#scale * 80|"],
+      "size": ["|$.#scale * 48|", "|$.#scale * 24|"],
+      "color": "0x000000",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseL2",
+      "panel": "pauseOverlay2",
+      "position": ["|$.#scale * 232|", "|$.#scale * 90|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 3|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseLS2",
+      "panel": "pauseOverlay2",
+      "position": ["|$.#scale * 233|", "|$.#scale * 91|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 1|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseR2",
+      "panel": "pauseOverlay2",
+      "position": ["|$.#scale * 279|", "|$.#scale * 90|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 3|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseRS2",
+      "panel": "pauseOverlay2",
+      "position": ["|$.#scale * 278|", "|$.#scale * 91|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 1|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    }
+  ],
+  "text": {
+    "id": "txtPause2",
+    "panel": "pauseOverlay2",
+    "font": "font3",
+    "position": ["|$.#scale * 236|", "|$.#scale * 88|"],
+    "anchor": "none",
+    "text": "Pause"
+  }
+}

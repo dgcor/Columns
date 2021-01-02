@@ -1,0 +1,83 @@
+{
+  "action": [
+    {
+      "name": "action.set",
+      "id": "updateAnimations",
+      "action": [
+        { "name": "animation.pause", "id": "animClassPlayer1", "pause": true, "reset": true },
+        { "name": "animation.pause", "id": "animHeightPlayer1", "pause": true, "reset": true },
+        { "name": "animation.pause", "id": "animBGM", "pause": true, "reset": true },
+        {
+          "name": "switch",
+          "param": "%menu.currentIdx%",
+          "case": [
+            {
+              "value": 0,
+              "action": { "name": "animation.pause", "id": "animClassPlayer1", "pause": false }
+            },
+            {
+              "value": 1,
+              "action": { "name": "animation.pause", "id": "animHeightPlayer1", "pause": false }
+            },
+            {
+              "value": 2,
+              "action": { "name": "animation.pause", "id": "animBGM", "pause": false }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "updateAnimationsP2",
+      "action": [
+        { "name": "animation.pause", "id": "animClassPlayer2", "pause": true, "reset": true },
+        { "name": "animation.pause", "id": "animHeightPlayer2", "pause": true, "reset": true },
+        {
+          "name": "switch",
+          "param": "%menuP2.currentIdx%",
+          "case": [
+            {
+              "value": 0,
+              "action": { "name": "animation.pause", "id": "animClassPlayer2", "pause": false }
+            },
+            {
+              "value": 1,
+              "action": { "name": "animation.pause", "id": "animHeightPlayer2", "pause": false }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectMenuHeight",
+      "action": [
+        { "name": "menu.setIndex", "id": "menu", "index": 1 },
+        "updateAnimations"
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectMenuBGM",
+      "action": [
+        { "name": "menu.setIndex", "id": "menu", "index": 2 },
+        "updateAnimations"
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectMenuHeightP2",
+      "action": [
+        { "name": "menu.setIndex", "id": "menuP2", "index": 1 },
+        "updateAnimationsP2"
+      ]
+    },
+    { "name": "variable.setIfNull", "key": "gameBGM", "value": "clotho" },
+    { "name": "variable.setIfNull", "key": "gameClass", "value": "novice" },
+    { "name": "variable.setIfNull", "key": "gameClassP2", "value": "novice" },
+    { "name": "variable.setIfNull", "key": "gameHeight", "value": 2 },
+    { "name": "variable.setIfNull", "key": "gameHeightP2", "value": 2 }
+  ],
+  "load": "ui/menu/common.json"
+}
