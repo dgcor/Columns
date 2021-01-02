@@ -1,0 +1,6 @@
+{
+  "load": "level/baseLevel1.json",
+  "load": "level/levelOptionsNovice.json",
+  "load": "level/highScores.json",
+  "load": "level/jewelClasses.json"
+}

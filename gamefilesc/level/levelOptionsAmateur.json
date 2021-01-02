@@ -1,0 +1,34 @@
+{
+  "level": {
+    "levels": [
+      {
+        "level": 0,
+        "jewels": [
+          "yellow",
+          "red",
+          "blue",
+          "orange",
+          "green"
+        ],
+        "dropSpeed": 525
+      },
+      { "dropSpeed": 140 },
+      { "dropSpeed": 100 },
+      { "dropSpeed": 90 },
+      { "dropSpeed": 65 },
+      { "dropSpeed": 40 },
+      { "dropSpeed": 80 },
+      { "dropSpeed": 50 },
+      { "dropSpeed": 35 },
+      { "dropSpeed": 25 },
+      { "dropSpeed": 22 },
+      { "dropSpeed": 18 },
+      { "dropSpeed": 15 },
+      { "dropSpeed": 12 },
+      { "dropSpeed": 10 },
+      { "dropSpeed": 8 },
+      { "dropSpeed": 6 },
+      { "dropSpeed": 5 }
+    ]
+  }
+}

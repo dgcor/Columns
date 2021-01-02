@@ -1,0 +1,16 @@
+{
+  "action": [
+    {
+      "name": "action.set",
+      "id": "newGame",
+      "action": [
+        { "name": "resource.popAll", "id": "menu" },
+        { "name": "load", "file": "ui/play/flash.json" }
+      ]
+    },
+    { "name": "variable.set", "key": "gameType", "value": "flash" },
+    { "name": "variable.set", "key": "player2", "value": false },
+    { "name": "variable.set", "key": "doubles", "value": false }
+  ],
+  "load": "ui/menu/menuFlash.json"
+}

@@ -1,0 +1,46 @@
+{
+  "jewelClass": [
+    {
+      "id": "yellow",
+      "texturePack": "yellowJewel",
+      "texturePackDestroy": "yellowJewelDestroy",
+      "points": 10
+    },
+    {
+      "id": "orange",
+      "texturePack": "orangeJewel",
+      "texturePackDestroy": "orangeJewelDestroy",
+      "points": 10
+    },
+    {
+      "id": "green",
+      "texturePack": "greenJewel",
+      "texturePackDestroy": "greenJewelDestroy",
+      "points": 10
+    },
+    {
+      "id": "purple",
+      "texturePack": "purpleJewel",
+      "texturePackDestroy": "purpleJewelDestroy",
+      "points": 10
+    },
+    {
+      "id": "red",
+      "texturePack": "redJewel",
+      "texturePackDestroy": "redJewelDestroy",
+      "points": 10
+    },
+    {
+      "id": "blue",
+      "texturePack": "blueJewel",
+      "texturePackDestroy": "blueJewelDestroy",
+      "points": 10
+    },
+    {
+      "id": "magic",
+      "texturePack": "magicJewel",
+      "texturePackDestroy": "magicJewelDestroy",
+      "points": 10
+    }
+  ]
+}

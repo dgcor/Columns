@@ -1,0 +1,8 @@
+{
+  "audio": {
+    "id": "select",
+    "file": "bgm/01 - Filthy (Select).ogg",
+    "loop": false,
+    "play": true
+  }
+}

@@ -1,0 +1,1125 @@
+{
+  "action": [
+    {
+      "name": "action.set",
+      "id": "updateBGM",
+      "action": {
+        "name": "switch",
+        "param": "%gameBGM%",
+        "case": [
+          { "value": "clotho", "action": { "name": "button.click", "id": "btnBGMClotho" } },
+          { "value": "lathesis", "action": { "name": "button.click", "id": "btnBGMLathesis" } },
+          { "value": "atropos", "action": { "name": "button.click", "id": "btnBGMAtropos" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevBGM",
+      "action": {
+        "name": "switch",
+        "param": "%gameBGM%",
+        "case": [
+          { "value": "clotho", "action": { "name": "button.click", "id": "btnBGMAtropos" } },
+          { "value": "atropos", "action": { "name": "button.click", "id": "btnBGMLathesis" } },
+          { "value": "lathesis", "action": { "name": "button.click", "id": "btnBGMClotho" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextBGM",
+      "action": {
+        "name": "switch",
+        "param": "%gameBGM%",
+        "case": [
+          { "value": "clotho", "action": { "name": "button.click", "id": "btnBGMLathesis" } },
+          { "value": "lathesis", "action": { "name": "button.click", "id": "btnBGMAtropos" } },
+          { "value": "atropos", "action": { "name": "button.click", "id": "btnBGMClotho" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "updateClass",
+      "action": {
+        "name": "switch",
+        "param": "%gameClass%",
+        "case": [
+          { "value": "novice", "action": { "name": "button.click", "id": "btnClassNovice" } },
+          { "value": "amateur", "action": { "name": "button.click", "id": "btnClassAmateur" } },
+          { "value": "pro", "action": { "name": "button.click", "id": "btnClassPro" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevClass",
+      "action": {
+        "name": "switch",
+        "param": "%gameClass%",
+        "case": [
+          { "value": "novice", "action": { "name": "button.click", "id": "btnClassPro" } },
+          { "value": "pro", "action": { "name": "button.click", "id": "btnClassAmateur" } },
+          { "value": "amateur", "action": { "name": "button.click", "id": "btnClassNovice" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextClass",
+      "action": {
+        "name": "switch",
+        "param": "%gameClass%",
+        "case": [
+          { "value": "novice", "action": { "name": "button.click", "id": "btnClassAmateur" } },
+          { "value": "amateur", "action": { "name": "button.click", "id": "btnClassPro" } },
+          { "value": "pro", "action": { "name": "button.click", "id": "btnClassNovice" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "updateClassP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameClassP2%",
+        "case": [
+          { "value": "novice", "action": { "name": "button.rightClick", "id": "btnClassNovice" } },
+          { "value": "amateur", "action": { "name": "button.rightClick", "id": "btnClassAmateur" } },
+          { "value": "pro", "action": { "name": "button.rightClick", "id": "btnClassPro" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevClassP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameClassP2%",
+        "case": [
+          { "value": "novice", "action": { "name": "button.rightClick", "id": "btnClassPro" } },
+          { "value": "pro", "action": { "name": "button.rightClick", "id": "btnClassAmateur" } },
+          { "value": "amateur", "action": { "name": "button.rightClick", "id": "btnClassNovice" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextClassP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameClassP2%",
+        "case": [
+          { "value": "novice", "action": { "name": "button.rightClick", "id": "btnClassAmateur" } },
+          { "value": "amateur", "action": { "name": "button.rightClick", "id": "btnClassPro" } },
+          { "value": "pro", "action": { "name": "button.rightClick", "id": "btnClassNovice" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "updateHeight",
+      "action": {
+        "name": "switch",
+        "param": "%gameHeight%",
+        "case": [
+          { "value": 2, "action": { "name": "button.click", "id": "btnHeight2" } },
+          { "value": 3, "action": { "name": "button.click", "id": "btnHeight3" } },
+          { "value": 4, "action": { "name": "button.click", "id": "btnHeight4" } },
+          { "value": 5, "action": { "name": "button.click", "id": "btnHeight5" } },
+          { "value": 6, "action": { "name": "button.click", "id": "btnHeight6" } },
+          { "value": 7, "action": { "name": "button.click", "id": "btnHeight7" } },
+          { "value": 8, "action": { "name": "button.click", "id": "btnHeight8" } },
+          { "value": 9, "action": { "name": "button.click", "id": "btnHeight9" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevHeight",
+      "action": {
+        "name": "switch",
+        "param": "%gameHeight%",
+        "case": [
+          { "value": 2, "action": { "name": "button.click", "id": "btnHeight9" } },
+          { "value": 9, "action": { "name": "button.click", "id": "btnHeight8" } },
+          { "value": 8, "action": { "name": "button.click", "id": "btnHeight7" } },
+          { "value": 7, "action": { "name": "button.click", "id": "btnHeight6" } },
+          { "value": 6, "action": { "name": "button.click", "id": "btnHeight5" } },
+          { "value": 5, "action": { "name": "button.click", "id": "btnHeight4" } },
+          { "value": 4, "action": { "name": "button.click", "id": "btnHeight3" } },
+          { "value": 3, "action": { "name": "button.click", "id": "btnHeight2" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextHeight",
+      "action": {
+        "name": "switch",
+        "param": "%gameHeight%",
+        "case": [
+          { "value": 2, "action": { "name": "button.click", "id": "btnHeight3" } },
+          { "value": 3, "action": { "name": "button.click", "id": "btnHeight4" } },
+          { "value": 4, "action": { "name": "button.click", "id": "btnHeight5" } },
+          { "value": 5, "action": { "name": "button.click", "id": "btnHeight6" } },
+          { "value": 6, "action": { "name": "button.click", "id": "btnHeight7" } },
+          { "value": 7, "action": { "name": "button.click", "id": "btnHeight8" } },
+          { "value": 8, "action": { "name": "button.click", "id": "btnHeight9" } },
+          { "value": 9, "action": { "name": "button.click", "id": "btnHeight2" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "updateHeightP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameHeightP2%",
+        "case": [
+          { "value": 2, "action": { "name": "button.rightClick", "id": "btnHeight2" } },
+          { "value": 3, "action": { "name": "button.rightClick", "id": "btnHeight3" } },
+          { "value": 4, "action": { "name": "button.rightClick", "id": "btnHeight4" } },
+          { "value": 5, "action": { "name": "button.rightClick", "id": "btnHeight5" } },
+          { "value": 6, "action": { "name": "button.rightClick", "id": "btnHeight6" } },
+          { "value": 7, "action": { "name": "button.rightClick", "id": "btnHeight7" } },
+          { "value": 8, "action": { "name": "button.rightClick", "id": "btnHeight8" } },
+          { "value": 9, "action": { "name": "button.rightClick", "id": "btnHeight9" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevHeightP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameHeightP2%",
+        "case": [
+          { "value": 2, "action": { "name": "button.rightClick", "id": "btnHeight9" } },
+          { "value": 9, "action": { "name": "button.rightClick", "id": "btnHeight8" } },
+          { "value": 8, "action": { "name": "button.rightClick", "id": "btnHeight7" } },
+          { "value": 7, "action": { "name": "button.rightClick", "id": "btnHeight6" } },
+          { "value": 6, "action": { "name": "button.rightClick", "id": "btnHeight5" } },
+          { "value": 5, "action": { "name": "button.rightClick", "id": "btnHeight4" } },
+          { "value": 4, "action": { "name": "button.rightClick", "id": "btnHeight3" } },
+          { "value": 3, "action": { "name": "button.rightClick", "id": "btnHeight2" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextHeightP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameHeightP2%",
+        "case": [
+          { "value": 2, "action": { "name": "button.rightClick", "id": "btnHeight3" } },
+          { "value": 3, "action": { "name": "button.rightClick", "id": "btnHeight4" } },
+          { "value": 4, "action": { "name": "button.rightClick", "id": "btnHeight5" } },
+          { "value": 5, "action": { "name": "button.rightClick", "id": "btnHeight6" } },
+          { "value": 6, "action": { "name": "button.rightClick", "id": "btnHeight7" } },
+          { "value": 7, "action": { "name": "button.rightClick", "id": "btnHeight8" } },
+          { "value": 8, "action": { "name": "button.rightClick", "id": "btnHeight9" } },
+          { "value": 9, "action": { "name": "button.rightClick", "id": "btnHeight2" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "updateLevel",
+      "action": {
+        "name": "switch",
+        "param": "%gameLevel%",
+        "case": [
+          { "value": 0, "action": { "name": "button.click", "id": "btnLevel0" } },
+          { "value": 1, "action": { "name": "button.click", "id": "btnLevel1" } },
+          { "value": 2, "action": { "name": "button.click", "id": "btnLevel2" } },
+          { "value": 3, "action": { "name": "button.click", "id": "btnLevel3" } },
+          { "value": 4, "action": { "name": "button.click", "id": "btnLevel4" } },
+          { "value": 5, "action": { "name": "button.click", "id": "btnLevel5" } },
+          { "value": 6, "action": { "name": "button.click", "id": "btnLevel6" } },
+          { "value": 7, "action": { "name": "button.click", "id": "btnLevel7" } },
+          { "value": 8, "action": { "name": "button.click", "id": "btnLevel8" } },
+          { "value": 9, "action": { "name": "button.click", "id": "btnLevel9" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevLevel",
+      "action": {
+        "name": "switch",
+        "param": "%gameLevel%",
+        "case": [
+          { "value": 0, "action": { "name": "button.click", "id": "btnLevel9" } },
+          { "value": 9, "action": { "name": "button.click", "id": "btnLevel8" } },
+          { "value": 8, "action": { "name": "button.click", "id": "btnLevel7" } },
+          { "value": 7, "action": { "name": "button.click", "id": "btnLevel6" } },
+          { "value": 6, "action": { "name": "button.click", "id": "btnLevel5" } },
+          { "value": 5, "action": { "name": "button.click", "id": "btnLevel4" } },
+          { "value": 4, "action": { "name": "button.click", "id": "btnLevel3" } },
+          { "value": 3, "action": { "name": "button.click", "id": "btnLevel2" } },
+          { "value": 2, "action": { "name": "button.click", "id": "btnLevel1" } },
+          { "value": 1, "action": { "name": "button.click", "id": "btnLevel0" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextLevel",
+      "action": {
+        "name": "switch",
+        "param": "%gameLevel%",
+        "case": [
+          { "value": 0, "action": { "name": "button.click", "id": "btnLevel1" } },
+          { "value": 1, "action": { "name": "button.click", "id": "btnLevel2" } },
+          { "value": 2, "action": { "name": "button.click", "id": "btnLevel3" } },
+          { "value": 3, "action": { "name": "button.click", "id": "btnLevel4" } },
+          { "value": 4, "action": { "name": "button.click", "id": "btnLevel5" } },
+          { "value": 5, "action": { "name": "button.click", "id": "btnLevel6" } },
+          { "value": 6, "action": { "name": "button.click", "id": "btnLevel7" } },
+          { "value": 7, "action": { "name": "button.click", "id": "btnLevel8" } },
+          { "value": 8, "action": { "name": "button.click", "id": "btnLevel9" } },
+          { "value": 9, "action": { "name": "button.click", "id": "btnLevel0" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "updateLevelP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameLevelP2%",
+        "case": [
+          { "value": 0, "action": { "name": "button.rightClick", "id": "btnLevel0" } },
+          { "value": 1, "action": { "name": "button.rightClick", "id": "btnLevel1" } },
+          { "value": 2, "action": { "name": "button.rightClick", "id": "btnLevel2" } },
+          { "value": 3, "action": { "name": "button.rightClick", "id": "btnLevel3" } },
+          { "value": 4, "action": { "name": "button.rightClick", "id": "btnLevel4" } },
+          { "value": 5, "action": { "name": "button.rightClick", "id": "btnLevel5" } },
+          { "value": 6, "action": { "name": "button.rightClick", "id": "btnLevel6" } },
+          { "value": 7, "action": { "name": "button.rightClick", "id": "btnLevel7" } },
+          { "value": 8, "action": { "name": "button.rightClick", "id": "btnLevel8" } },
+          { "value": 9, "action": { "name": "button.rightClick", "id": "btnLevel9" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevLevelP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameLevelP2%",
+        "case": [
+          { "value": 0, "action": { "name": "button.rightClick", "id": "btnLevel9" } },
+          { "value": 9, "action": { "name": "button.rightClick", "id": "btnLevel8" } },
+          { "value": 8, "action": { "name": "button.rightClick", "id": "btnLevel7" } },
+          { "value": 7, "action": { "name": "button.rightClick", "id": "btnLevel6" } },
+          { "value": 6, "action": { "name": "button.rightClick", "id": "btnLevel5" } },
+          { "value": 5, "action": { "name": "button.rightClick", "id": "btnLevel4" } },
+          { "value": 4, "action": { "name": "button.rightClick", "id": "btnLevel3" } },
+          { "value": 3, "action": { "name": "button.rightClick", "id": "btnLevel2" } },
+          { "value": 2, "action": { "name": "button.rightClick", "id": "btnLevel1" } },
+          { "value": 1, "action": { "name": "button.rightClick", "id": "btnLevel0" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextLevelP2",
+      "action": {
+        "name": "switch",
+        "param": "%gameLevelP2%",
+        "case": [
+          { "value": 0, "action": { "name": "button.rightClick", "id": "btnLevel1" } },
+          { "value": 1, "action": { "name": "button.rightClick", "id": "btnLevel2" } },
+          { "value": 2, "action": { "name": "button.rightClick", "id": "btnLevel3" } },
+          { "value": 3, "action": { "name": "button.rightClick", "id": "btnLevel4" } },
+          { "value": 4, "action": { "name": "button.rightClick", "id": "btnLevel5" } },
+          { "value": 5, "action": { "name": "button.rightClick", "id": "btnLevel6" } },
+          { "value": 6, "action": { "name": "button.rightClick", "id": "btnLevel7" } },
+          { "value": 7, "action": { "name": "button.rightClick", "id": "btnLevel8" } },
+          { "value": 8, "action": { "name": "button.rightClick", "id": "btnLevel9" } },
+          { "value": 9, "action": { "name": "button.rightClick", "id": "btnLevel0" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "updateMatch",
+      "action": {
+        "name": "switch",
+        "param": "%gameMatch%",
+        "case": [
+          { "value": false, "action": { "name": "button.click", "id": "btnMatchNo" } },
+          { "value": true, "action": { "name": "button.click", "id": "btnMatchYes" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevMatch",
+      "action": {
+        "name": "switch",
+        "param": "%gameMatch%",
+        "case": [
+          { "value": false, "action": { "name": "button.click", "id": "btnMatchYes" } },
+          { "value": true, "action": { "name": "button.click", "id": "btnMatchNo" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextMatch",
+      "action": "prevMatch"
+    },
+    {
+      "name": "action.set",
+      "id": "updateTimeTrial",
+      "action": {
+        "name": "switch",
+        "param": "%gameTimeTrial%",
+        "case": [
+          { "value": false, "action": { "name": "button.click", "id": "btnTimeTrialNo" } },
+          { "value": true, "action": { "name": "button.click", "id": "btnTimeTrialYes" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevTimeTrial",
+      "action": {
+        "name": "switch",
+        "param": "%gameTimeTrial%",
+        "case": [
+          { "value": false, "action": { "name": "button.click", "id": "btnTimeTrialYes" } },
+          { "value": true, "action": { "name": "button.click", "id": "btnTimeTrialNo" } }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextTimeTrial",
+      "action": "prevTimeTrial"
+    },
+    {
+      "name": "action.set",
+      "id": "prevOptionOriginal",
+      "action": {
+        "name": "switch",
+        "param": "%menu.currentIdx%",
+        "case": [
+          { "value": 0, "action": "prevClass" },
+          { "value": 1, "action": "prevLevel" },
+          { "value": 2, "action": "prevTimeTrial" },
+          { "value": 3, "action": "prevBGM" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextOptionOriginal",
+      "action": {
+        "name": "switch",
+        "param": "%menu.currentIdx%",
+        "case": [
+          { "value": 0, "action": "nextClass" },
+          { "value": 1, "action": "nextLevel" },
+          { "value": 2, "action": "nextTimeTrial" },
+          { "value": 3, "action": "nextBGM" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "upOptionOriginal",
+      "action": [
+        {
+          "name": "menu.setIndex",
+          "id": "menu",
+          "index": "%$.menu.currentIdx - 1 :neg (menu.itemCount - 1)%"
+        },
+        "updateAnimations"
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "downOptionOriginal",
+      "action": [
+        {
+          "name": "menu.setIndex",
+          "id": "menu",
+          "index": "%$.menu.currentIdx + 1 % menu.itemCount%"
+        },
+        "updateAnimations"
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "prevOptionOriginalP2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%player2%",
+        "param2": true,
+        "then": {
+          "name": "switch",
+          "param": "%menuP2.currentIdx%",
+          "case": [
+            { "value": 0, "action": "prevClassP2" },
+            { "value": 1, "action": "prevLevelP2" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextOptionOriginalP2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%player2%",
+        "param2": true,
+        "then": {
+          "name": "switch",
+          "param": "%menuP2.currentIdx%",
+          "case": [
+            { "value": 0, "action": "nextClassP2" },
+            { "value": 1, "action": "nextLevelP2" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "upOptionOriginalP2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%player2%",
+        "param2": true,
+        "then": [
+          {
+            "name": "menu.setIndex",
+            "id": "menuP2",
+            "index": "%$.menuP2.currentIdx - 1 :neg (menuP2.itemCount - 1)%"
+          },
+          "updateAnimationsP2"
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "downOptionOriginalP2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%player2%",
+        "param2": true,
+        "then": [
+          {
+            "name": "menu.setIndex",
+            "id": "menuP2",
+            "index": "%$.menuP2.currentIdx + 1 % menuP2.itemCount%"
+          },
+          "updateAnimationsP2"
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "prevOptionFlash",
+      "action": {
+        "name": "switch",
+        "param": "%menu.currentIdx%",
+        "case": [
+          { "value": 0, "action": "prevClass" },
+          { "value": 1, "action": "prevHeight" },
+          { "value": 2, "action": "prevBGM" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextOptionFlash",
+      "action": {
+        "name": "switch",
+        "param": "%menu.currentIdx%",
+        "case": [
+          { "value": 0, "action": "nextClass" },
+          { "value": 1, "action": "nextHeight" },
+          { "value": 2, "action": "nextBGM" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "upOptionFlash",
+      "action": "upOptionOriginal"
+    },
+    {
+      "name": "action.set",
+      "id": "downOptionFlash",
+      "action": "downOptionOriginal"
+    },
+    {
+      "name": "action.set",
+      "id": "prevOptionFlashP2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%player2%",
+        "param2": true,
+        "then": {
+          "name": "switch",
+          "param": "%menuP2.currentIdx%",
+          "case": [
+            { "value": 0, "action": "prevClassP2" },
+            { "value": 1, "action": "prevHeightP2" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextOptionFlashP2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%player2%",
+        "param2": true,
+        "then": {
+          "name": "switch",
+          "param": "%menuP2.currentIdx%",
+          "case": [
+            { "value": 0, "action": "nextClassP2" },
+            { "value": 1, "action": "nextHeightP2" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "upOptionFlashP2",
+      "action": "upOptionOriginalP2"
+    },
+    {
+      "name": "action.set",
+      "id": "downOptionFlashP2",
+      "action": "downOptionOriginalP2"
+    },
+    {
+      "name": "action.set",
+      "id": "prevOptionFlashMatch",
+      "action": {
+        "name": "switch",
+        "param": "%menu.currentIdx%",
+        "case": [
+          { "value": 0, "action": "prevClass" },
+          { "value": 1, "action": "prevHeight" },
+          { "value": 2, "action": "prevMatch" },
+          { "value": 3, "action": "prevBGM" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextOptionFlashMatch",
+      "action": {
+        "name": "switch",
+        "param": "%menu.currentIdx%",
+        "case": [
+          { "value": 0, "action": "nextClass" },
+          { "value": 1, "action": "nextHeight" },
+          { "value": 2, "action": "nextMatch" },
+          { "value": 3, "action": "nextBGM" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "upOptionFlashMatch",
+      "action": "upOptionFlash"
+    },
+    {
+      "name": "action.set",
+      "id": "downOptionFlashMatch",
+      "action": "downOptionFlash"
+    },
+    {
+      "name": "action.set",
+      "id": "prevOptionFlashMatchP2",
+      "action": "prevOptionFlashP2"
+    },
+    {
+      "name": "action.set",
+      "id": "nextOptionFlashMatchP2",
+      "action": "nextOptionFlashP2"
+    },
+    {
+      "name": "action.set",
+      "id": "upOptionFlashMatchP2",
+      "action": "upOptionFlashP2"
+    },
+    {
+      "name": "action.set",
+      "id": "downOptionFlashMatchP2",
+      "action": "downOptionFlashP2"
+    },
+    {
+      "name": "action.set",
+      "id": "selectMenuClass",
+      "action": [
+        { "name": "menu.setIndex", "id": "menu", "index": 0 },
+        "updateAnimations"
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectMenuClassP2",
+      "action": [
+        { "name": "menu.setIndex", "id": "menuP2", "index": 0 },
+        "updateAnimationsP2"
+      ]
+    }
+  ],
+  "replaceVars": "value",
+  "action": [
+    {
+      "name": "action.set",
+      "id": "selectBGMClotho",
+      "action": [
+        "selectMenuBGM",
+        { "name": "variable.set", "key": "gameBGM", "value": "clotho" },
+        { "name": "drawable.anchor", "id": "animBGM", "idAnchor": "btnBGMClotho", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectBGMLathesis",
+      "action": [
+        "selectMenuBGM",
+        { "name": "variable.set", "key": "gameBGM", "value": "lathesis" },
+        { "name": "drawable.anchor", "id": "animBGM", "idAnchor": "btnBGMLathesis", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectBGMAtropos",
+      "action": [
+        "selectMenuBGM",
+        { "name": "variable.set", "key": "gameBGM", "value": "atropos" },
+        { "name": "drawable.anchor", "id": "animBGM", "idAnchor": "btnBGMAtropos", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectClassNovice",
+      "action": [
+        "selectMenuClass",
+        { "name": "variable.set", "key": "gameClass", "value": "novice" },
+        { "name": "drawable.anchor", "id": "animClassPlayer1", "idAnchor": "btnClassNovice", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectClassAmateur",
+      "action": [
+        "selectMenuClass",
+        { "name": "variable.set", "key": "gameClass", "value": "amateur" },
+        { "name": "drawable.anchor", "id": "animClassPlayer1", "idAnchor": "btnClassAmateur", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectClassPro",
+      "action": [
+        "selectMenuClass",
+        { "name": "variable.set", "key": "gameClass", "value": "pro" },
+        { "name": "drawable.anchor", "id": "animClassPlayer1", "idAnchor": "btnClassPro", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectClassNoviceP2",
+      "action": [
+        "selectMenuClassP2",
+        { "name": "variable.set", "key": "gameClassP2", "value": "novice" },
+        { "name": "drawable.anchor", "id": "animClassPlayer2", "idAnchor": "btnClassNovice", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectClassAmateurP2",
+      "action": [
+        "selectMenuClassP2",
+        { "name": "variable.set", "key": "gameClassP2", "value": "amateur" },
+        { "name": "drawable.anchor", "id": "animClassPlayer2", "idAnchor": "btnClassAmateur", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectClassProP2",
+      "action": [
+        "selectMenuClassP2",
+        { "name": "variable.set", "key": "gameClassP2", "value": "pro" },
+        { "name": "drawable.anchor", "id": "animClassPlayer2", "idAnchor": "btnClassPro", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight2",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 2 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight2", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight3",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 3 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight3", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight4",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 4 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight4", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight5",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 5 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight5", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight6",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 6 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight6", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight7",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 7 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight7", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight8",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 8 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight8", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight9",
+      "action": [
+        "selectMenuHeight",
+        { "name": "variable.set", "key": "gameHeight", "value": 9 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer1", "idAnchor": "btnHeight9", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight2P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 2 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight2", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight3P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 3 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight3", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight4P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 4 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight4", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight5P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 5 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight5", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight6P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 6 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight6", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight7P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 7 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight7", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight8P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 8 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight8", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectHeight9P2",
+      "action": [
+        "selectMenuHeightP2",
+        { "name": "variable.set", "key": "gameHeightP2", "value": 9 },
+        { "name": "drawable.anchor", "id": "animHeightPlayer2", "idAnchor": "btnHeight9", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel0",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 0 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel0", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel1",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 1 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel1", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel2",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 2 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel2", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel3",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 3 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel3", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel4",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 4 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel4", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel5",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 5 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel5", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel6",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 6 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel6", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel7",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 7 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel7", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel8",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 8 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel8", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel9",
+      "action": [
+        "selectMenuLevel",
+        { "name": "variable.set", "key": "gameLevel", "value": 9 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer1", "idAnchor": "btnLevel9", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel0P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 0 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel0", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel1P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 1 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel1", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel2P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 2 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel2", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel3P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 3 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel3", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel4P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 4 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel4", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel5P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 5 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel5", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel6P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 6 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel6", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel7P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 7 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel7", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel8P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 8 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel8", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectLevel9P2",
+      "action": [
+        "selectMenuLevelP2",
+        { "name": "variable.set", "key": "gameLevelP2", "value": 9 },
+        { "name": "drawable.anchor", "id": "animLevelPlayer2", "idAnchor": "btnLevel9", "anchor": "bottomLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectMatchNo",
+      "action": [
+        "selectMenuTimeTrial",
+        { "name": "variable.set", "key": "gameMatch", "value": false },
+        { "name": "drawable.anchor", "id": "animMatch", "idAnchor": "btnMatchNo", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectMatchYes",
+      "action": [
+        "selectMenuTimeTrial",
+        { "name": "variable.set", "key": "gameMatch", "value": true },
+        { "name": "drawable.anchor", "id": "animMatch", "idAnchor": "btnMatchYes", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectTimeTrialNo",
+      "action": [
+        "selectMenuTimeTrial",
+        { "name": "variable.set", "key": "gameTimeTrial", "value": false },
+        { "name": "drawable.anchor", "id": "animTimeTrial", "idAnchor": "btnTimeTrialNo", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "selectTimeTrialYes",
+      "action": [
+        "selectMenuTimeTrial",
+        { "name": "variable.set", "key": "gameTimeTrial", "value": true },
+        { "name": "drawable.anchor", "id": "animTimeTrial", "idAnchor": "btnTimeTrialYes", "anchor": "topLeft", "offset": ["|$.#scale * 8|", 0] }
+      ]
+    }
+  ]
+}

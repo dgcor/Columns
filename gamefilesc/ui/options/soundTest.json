@@ -1,0 +1,176 @@
+{
+  "action": [
+    {
+      "name": "resource.add",
+      "id": "soundTest",
+      "ignorePrevious": true
+    },
+    {
+      "name": "action.set",
+      "id": "deleteAudio",
+      "action": [
+        { "name": "audio.delete", "id": "main" },
+        { "name": "audio.delete", "id": "gameOver" },
+        { "name": "audio.delete", "id": "nameEntry" },
+        { "name": "audio.delete", "id": "select" },
+        { "name": "audio.delete", "id": "start" },
+        { "name": "game.clearPlayingSounds" }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "prevSound",
+      "action": {
+        "name": "if.equal",
+        "param1": "%menu.currentIdx%",
+        "param2": 7,
+        "then": { "name": "variable.set", "key": "seNo", "value": "%$.#seNo - 1 % 8 :negz 8%" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextSound",
+      "action": {
+        "name": "if.equal",
+        "param1": "%menu.currentIdx%",
+        "param2": 7,
+        "then": { "name": "variable.set", "key": "seNo", "value": "%$.#seNo % 8 + 1%" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound",
+      "action": {
+        "name": "loadJson",
+        "json": {
+          "replaceVars": true,
+          "action": "playSound|seNo|"
+        }
+      }
+    }
+  ],
+  "inputEvent": [
+    {
+      "key": "esc",
+      "action": { "name": "resource.pop" }
+    },
+    {
+      "key": "left",
+      "action": "prevSound"
+    },
+    {
+      "key": "right",
+      "action": "nextSound"
+    }
+  ],
+  "replaceVars": "value",
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "options",
+    "captureInputEvents": true
+  },
+  "text": [
+    {
+      "id": "txtOptions",
+      "font": "font1White",
+      "position": ["|$.#scale * 120|", "|$.#scale * 16|"],
+      "anchor": "none",
+      "text": "Sound Test"
+    },
+    {
+      "id": "txtSeNo",
+      "font": "font1White",
+      "position": ["|$.#scale * 192|", "|$.#scale * 160|"],
+      "anchor": "none",
+      "binding": "%seNo%"
+    },
+    {
+      "id": "arrow",
+      "font": "font1Cyan",
+      "position": ["|$.#scale * 104|", "|$.#scale * 48|"],
+      "anchor": "none",
+      "text": "["
+    }
+  ],
+  "menu": {
+    "id": "menu",
+    "font": "font1Yellow",
+    "position": ["|$.#scale * 120|", "|$.#scale * 48|"],
+    "focus": true,
+    "anchor": "none",
+    "verticalPad": "|$.#scale * 7|",
+    "items": [
+      {
+        "text": "Clotho",
+        "onClick": [
+          "deleteAudio",
+          { "name": "load", "file": "bgm/clotho.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Lathesis",
+        "onClick": [
+          "deleteAudio",
+          { "name": "load", "file": "bgm/lathesis.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Atropos",
+        "onClick": [
+          "deleteAudio",
+          { "name": "load", "file": "bgm/atropos.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Select",
+        "onClick": [
+          "deleteAudio",
+          { "name": "load", "file": "bgm/select.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Start",
+        "onClick": [
+          "deleteAudio",
+          { "name": "load", "file": "bgm/start.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Name Entry",
+        "onClick": [
+          "deleteAudio",
+          { "name": "load", "file": "bgm/nameEntry.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Game Over",
+        "onClick": [
+          "deleteAudio",
+          { "name": "load", "file": "bgm/gameOver.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "S.E. no.  ",
+        "onClick": [
+          "deleteAudio",
+          "playSound"
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Exit",
+        "onClick": { "name": "resource.pop" },
+        "onFocus": "anchorArrow"
+      }
+    ]
+  },
+  "action": { "name": "menu.setFont", "id": "menu", "index": 8, "font": "font1White" }
+}

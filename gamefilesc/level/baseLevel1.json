@@ -1,0 +1,27 @@
+{
+  "replaceVars": "value",
+  "level": {
+    "id": "level",
+    "init": true,
+    "tileSize": "|$.#scale * 16|",
+    "position": ["|$.#scale * 16|", "|$.#scale * 8|"],
+    "startPosition": 3,
+    "anchor": "none",
+    "selectTexturePack": "jewelSelect",
+    "highlightTexturePack": "jewelHighlight",
+    "magicJewel": "magic",
+    "onLevelUp": "playSound5",
+    "onRotate": "playSound7",
+    "onDestroy": {
+      "name": "if.equal",
+      "param1": "%level.magicJewelDestroyed%",
+      "param2": true,
+      "then": "playSound6",
+      "else": "playSound1"
+    },
+    "onTouchBase": "playSound4",
+    "onGameOver": { "name": "load", "file": "ui/play/gameOver1.json" },
+    "scoreFormula": "chain * (level * jewelsPoints + jewelsPoints)",
+    "levelUpFormula": "jewels / 50"
+  }
+}

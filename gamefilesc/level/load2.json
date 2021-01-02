@@ -1,0 +1,22 @@
+{
+  "action": [
+    {
+      "name": "switch",
+      "param": "%gameClassP2%",
+      "case": [
+        { "value": "novice", "action": { "name": "load", "file": "level/loadNovice2.json" } },
+        { "value": "amateur", "action": { "name": "load", "file": "level/loadAmateur2.json" } },
+        { "value": "pro", "action": { "name": "load", "file": "level/loadPro2.json" } }
+      ]
+    },
+    {
+      "name": "switch",
+      "param": "%gameClass%",
+      "case": [
+        { "value": "novice", "action": { "name": "load", "file": "level/loadNovice1.json" } },
+        { "value": "amateur", "action": { "name": "load", "file": "level/loadAmateur1.json" } },
+        { "value": "pro", "action": { "name": "load", "file": "level/loadPro1.json" } }
+      ]
+    }
+  ]
+}

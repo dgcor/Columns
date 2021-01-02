@@ -1,0 +1,11 @@
+{
+  "action": {
+    "name": "if.equal",
+    "param1": "%game.hasTexture.{1}%",
+    "param2": false,
+    "then": {
+      "name": "loadJson",
+      "json": { "texture": { "file": "gfx%scale%x/{1}.png" } }
+    }
+  }
+}

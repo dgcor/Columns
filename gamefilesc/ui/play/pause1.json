@@ -1,0 +1,92 @@
+{
+  "action": {
+    "name": "action.set",
+    "id": "pauseGame",
+    "action": {
+      "name": "if.equal",
+      "param1": "%level.pause%",
+      "param2": true,
+      "then": [
+        { "name": "level.pause", "pause": false },
+        { "name": "event.delete", "id": "pauseOverlay" },
+        { "name": "drawable.visible", "id": "pauseOverlay", "visible": false }
+      ],
+      "else": [
+        { "name": "level.pause", "pause": true },
+        {
+          "name": "if.equal",
+          "param1": "%game.hasEvent.pauseOverlay%",
+          "param2": false,
+          "then": {
+            "name": "event.add",
+            "id": "pauseOverlay",
+            "time": 300,
+            "action": {
+              "name": "if.equal",
+              "param1": true,
+              "param2": false,
+              "else": { "name": "drawable.toggleVisible", "id": "pauseOverlay" }
+            }
+          },
+          "else": { "name": "event.resetTime", "id": "pauseOverlay" }
+        },
+        { "name": "drawable.visible", "id": "overlay", "visible": true }
+      ]
+    }
+  },
+  "panel": {
+    "id": "pauseOverlay",
+    "visible": false
+  },
+  "replaceVars": "value",
+  "rectangle": [
+    {
+      "id": "borderPause",
+      "panel": "pauseOverlay",
+      "position": ["|$.#scale * 40|", "|$.#scale * 80|"],
+      "size": ["|$.#scale * 48|", "|$.#scale * 24|"],
+      "color": "0x000000",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseL",
+      "panel": "pauseOverlay",
+      "position": ["|$.#scale * 40|", "|$.#scale * 90|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 3|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseLS",
+      "panel": "pauseOverlay",
+      "position": ["|$.#scale * 41|", "|$.#scale * 91|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 1|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseR",
+      "panel": "pauseOverlay",
+      "position": ["|$.#scale * 87|", "|$.#scale * 90|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 3|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    },
+    {
+      "id": "borderPauseRS",
+      "panel": "pauseOverlay",
+      "position": ["|$.#scale * 86|", "|$.#scale * 91|"],
+      "size": ["|$.#scale * 1|", "|$.#scale * 1|"],
+      "color": "0xE0E0E0",
+      "anchor": "none"
+    }
+  ],
+  "text": {
+    "id": "txtPause",
+    "panel": "pauseOverlay",
+    "font": "font3",
+    "position": ["|$.#scale * 44|", "|$.#scale * 88|"],
+    "anchor": "none",
+    "text": "Pause"
+  }
+}

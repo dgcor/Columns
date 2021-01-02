@@ -1,0 +1,135 @@
+{
+  "action": [
+    {
+      "name": "resource.add",
+      "id": "mainMenu"
+    },
+    {
+      "name": "action.set",
+      "id": "resetMainMenu",
+      "action": [
+        { "name": "load", "file": "ui/mainMenuStart.json" },
+        { "name": "drawable.visible", "id": "menuPanel", "visible": false },
+        { "name": "variable.setIfNull", "key": "mainMenuBackground", "value": 0 },
+        {
+          "name": "if.equal",
+          "param1": "%mainMenuBackground%",
+          "param2": 0,
+          "then": [
+            { "name": "variable.set", "key": "mainMenuBackground", "value": 1 },
+            { "name": "image.setTexture", "id": "background", "texture": "main2" }
+          ],
+          "else": [
+            { "name": "variable.set", "key": "mainMenuBackground", "value": 0 },
+            { "name": "image.setTexture", "id": "background", "texture": "main1" }
+          ]
+        }
+      ]
+    }
+  ],
+  "inputEvent": [
+    {
+      "key": "f1",
+      "action": { "name": "load", "file": "ui/settings.json" }
+    },
+    {
+      "key": ["enter", " "],
+      "action": "focus.click"
+    },
+    {
+      "key": ["up", "w"],
+      "action": "focus.moveUp"
+    },
+    {
+      "key": "tab",
+      "shift": true,
+      "action": "focus.moveUp"
+    },
+    {
+      "key": ["down", "s", "tab"],
+      "action": "focus.moveDown"
+    },
+    {
+      "key": "esc",
+      "action": {
+        "name": "game.fadeOut",
+        "action": {
+          "name": "game.close"
+        }
+      }
+    }
+  ],
+  "load": "res/mainMenuTextures.json",
+  "replaceVars": "value",
+  "image": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "main1"
+  },
+  "panel": {
+    "id": "menuPanel",
+    "visible": false
+  },
+  "image": {
+    "id": "menuImg",
+    "panel": "menuPanel",
+    "position": ["center", "|$.#scale * 128|"],
+    "anchor": "none",
+    "texture": "mainMenu"
+  },
+  "text": [
+    {
+      "id": "txtSelect",
+      "panel": "menuPanel",
+      "font": "font1White",
+      "position": ["|$.#scale * 136|", "|$.#scale * 128|"],
+      "anchor": "none",
+      "text": "Select"
+    },
+    {
+      "id": "arrow",
+      "panel": "menuPanel",
+      "font": "font1White",
+      "position": ["|$.#scale * 120|", "|$.#scale * 144|"],
+      "anchor": "none",
+      "text": "["
+    }
+  ],
+  "menu": {
+    "id": "menu",
+    "panel": "menuPanel",
+    "font": "font1White",
+    "position": ["|$.#scale * 136|", "|$.#scale * 144|"],
+    "focus": true,
+    "anchor": "none",
+    "verticalPad": "|$.#scale * 7|",
+    "items": [
+      {
+        "text": "Arcade",
+        "onClick": [
+          "resetMainMenu",
+          { "name": "resource.pop", "id": "play" },
+          { "name": "load", "file": "ui/play/arcade.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Menu",
+        "onClick": [
+          "resetMainMenu",
+          { "name": "load", "file": "ui/menu/menu.json" }
+        ],
+        "onFocus": "anchorArrow"
+      },
+      {
+        "text": "Options",
+        "onClick": [
+          "resetMainMenu",
+          { "name": "load", "file": "ui/options/options.json" }
+        ],
+        "onFocus": "anchorArrow"
+      }
+    ]
+  },
+  "load": "ui/mainMenuStart.json"
+}

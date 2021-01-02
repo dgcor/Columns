@@ -1,0 +1,8 @@
+{
+  "audio": {
+    "id": "main",
+    "file": "bgm/07 - Lathesis.ogg",
+    "loop": true,
+    "play": true
+  }
+}

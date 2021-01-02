@@ -1,0 +1,261 @@
+{
+  "action": [
+    {
+      "name": "resource.add",
+      "id": "options",
+      "ignorePrevious": true
+    },
+    {
+      "name": "action.set",
+      "id": "prevDifficulty",
+      "action": {
+        "name": "if.equal",
+        "param1": "%menu.currentIdx%",
+        "param2": 0,
+        "then": {
+          "name": "switch",
+          "param": "%difficultyArcade%",
+          "case": [
+            {
+              "value": "normal",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "hard" }
+            },
+            {
+              "value": "hard",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "easiest" }
+            },
+            {
+              "value": "easiest",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "easy" }
+            },
+            {
+              "value": "easy",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "normal" }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "nextDifficulty",
+      "action": {
+        "name": "if.equal",
+        "param1": "%menu.currentIdx%",
+        "param2": 0,
+        "then": {
+          "name": "switch",
+          "param": "%difficultyArcade%",
+          "case": [
+            {
+              "value": "normal",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "easy" }
+            },
+            {
+              "value": "easy",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "easiest" }
+            },
+            {
+              "value": "easiest",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "hard" }
+            },
+            {
+              "value": "hard",
+              "action": { "name": "variable.set", "key": "difficultyArcade", "value": "normal" }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "inputEvent": [
+    {
+      "key": "esc",
+      "action": { "name": "resource.pop" }
+    },
+    {
+      "key": "left",
+      "action": "prevDifficulty"
+    },
+    {
+      "key": "right",
+      "action": "nextDifficulty"
+    }
+  ],
+  "replaceVars": "value",
+  "texture": { "file": "gfx|scale|x/options.png" },
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "options",
+    "captureInputEvents": true
+  },
+  "text": [
+    {
+      "id": "txtOptions",
+      "font": "font1White",
+      "position": ["|$.#scale * 128|", "|$.#scale * 16|"],
+      "anchor": "none",
+      "text": "Options"
+    },
+    {
+      "id": "arrow",
+      "font": "font1Cyan",
+      "position": ["|$.#scale * 32|", "|$.#scale * 40|"],
+      "anchor": "none",
+      "text": "["
+    },
+    {
+      "id": "txtDifficulty",
+      "font": "font1White",
+      "position": ["|$.#scale * 72|", "|$.#scale * 56|"],
+      "anchor": "none",
+      "binding": "%difficultyArcade%"
+    },
+    {
+      "id": "txtPadDown",
+      "font": "font1Cyan",
+      "position": ["|$.#scale * 56|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "text": "Pad Down"
+    },
+    {
+      "id": "txtPadA",
+      "font": "font1Cyan",
+      "position": ["|$.#scale * 56|", "|$.#scale * 112|"],
+      "anchor": "none",
+      "text": "A Button"
+    },
+    {
+      "id": "txtPadB",
+      "font": "font1Cyan",
+      "position": ["|$.#scale * 56|", "|$.#scale * 128|"],
+      "anchor": "none",
+      "text": "B Button"
+    },
+    {
+      "id": "txtPadC",
+      "font": "font1Cyan",
+      "position": ["|$.#scale * 56|", "|$.#scale * 144|"],
+      "anchor": "none",
+      "text": "C Button"
+    },
+    {
+      "id": "txtControl1",
+      "font": "font1White",
+      "position": ["|$.#scale * 136|", "|$.#scale * 80|"],
+      "anchor": "none",
+      "text": "Control 1"
+    },
+    {
+      "id": "txtPadDown1",
+      "font": "font1White",
+      "position": ["|$.#scale * 168|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Drop"
+    },
+    {
+      "id": "txtPadA1",
+      "font": "font1White",
+      "position": ["|$.#scale * 168|", "|$.#scale * 112|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Rotate"
+    },
+    {
+      "id": "txtPadB1",
+      "font": "font1White",
+      "position": ["|$.#scale * 168|", "|$.#scale * 128|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Rotate"
+    },
+    {
+      "id": "txtPadC1",
+      "font": "font1White",
+      "position": ["|$.#scale * 168|", "|$.#scale * 144|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Rotate"
+    },
+    {
+      "id": "txtControl2",
+      "font": "font1White",
+      "position": ["|$.#scale * 224|", "|$.#scale * 80|"],
+      "anchor": "none",
+      "text": "Control 2"
+    },
+    {
+      "id": "txtPadDown2",
+      "font": "font1White",
+      "position": ["|$.#scale * 256|", "|$.#scale * 96|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Drop"
+    },
+    {
+      "id": "txtPadA2",
+      "font": "font1White",
+      "position": ["|$.#scale * 256|", "|$.#scale * 112|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Rotate"
+    },
+    {
+      "id": "txtPadB2",
+      "font": "font1White",
+      "position": ["|$.#scale * 256|", "|$.#scale * 128|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Rotate"
+    },
+    {
+      "id": "txtPadC2",
+      "font": "font1White",
+      "position": ["|$.#scale * 256|", "|$.#scale * 144|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "Rotate"
+    }
+  ],
+  "menu": {
+    "id": "menu",
+    "font": "font1Yellow",
+    "position": ["|$.#scale * 48|", "|$.#scale * 40|"],
+    "focus": true,
+    "anchor": "none",
+    "items": [
+      {
+        "position": ["|$.#scale * 48|", "|$.#scale * 40|"],
+        "text": "Difficulty (Arcade)",
+        "onClick": "nextDifficulty",
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 48|", "|$.#scale * 72|"],
+        "text": "Control",
+        "onClick": null,
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 48|", "|$.#scale * 168|"],
+        "text": "Sound Test",
+        "onClick": { "name": "load", "file": "ui/options/soundTest.json" },
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 48|", "|$.#scale * 184|"],
+        "text": "Color Test",
+        "onClick": { "name": "load", "file": "ui/options/colorTest.json" },
+        "onFocus": "anchorArrow"
+      },
+      {
+        "position": ["|$.#scale * 48|", "|$.#scale * 200|"],
+        "text": "Exit",
+        "onClick": { "name": "resource.pop" },
+        "onFocus": "anchorArrow"
+      }
+    ]
+  }
+}

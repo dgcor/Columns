@@ -1,0 +1,36 @@
+{
+  "load": "bgm/start.json",
+  "action": [
+    "startGame2",
+    { "name": "audio.play", "id": "start" },
+    { "name": "level.pause", "level": "level2", "pause": true }
+  ],
+  "inputEvent": {
+    "key": "g",
+    "action": null
+  },
+  "replaceVars": "value",
+  "text": {
+    "id": "txtGameStart2",
+    "font": "font3",
+    "position": ["|$.#scale * 216|", "|$.#scale * 112|"],
+    "anchor": "none",
+    "text": "Game Start"
+  },
+  "event": {
+    "time": 6.0,
+    "action": [
+      { "name": "level.pause", "level": "level2", "pause": false },
+      { "name": "drawable.delete", "id": "txtGameStart2" },
+      { "name": "load", "file": "bgm/|gameBGM|.json" },
+      { "name": "audio.play", "id": "main" },
+      { "name": "loadJson", "json": {
+          "inputEvent": {
+            "key": "g",
+            "action": "pauseGame2"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "play",
+    "ignorePrevious": true
+  },
+  "inputEvent": [
+    {
+      "key": "esc",
+      "action": [
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "key": [" ", "rshift"],
+      "action": { "name": "level.rotateJewels" }
+    },
+    {
+      "key": "down",
+      "event": "level.down"
+    },
+    {
+      "key": "left",
+      "event": "level.left"
+    },
+    {
+      "key": "right",
+      "event": "level.right"
+    }
+  ],
+  "replaceVars": "value",
+  "texture": { "file": "gfx|scale|x/original1p.png" },
+  "button": {
+    "id": "background",
+    "anchor": "none",
+    "texture": "original1p",
+    "captureInputEvents": true
+  },
+  "text": [
+    {
+      "id": "txtScoreLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 44|", "|$.#scale * 124|"],
+      "anchor": "none",
+      "text": "Score"
+    },
+    {
+      "id": "txtLevelLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 44|", "|$.#scale * 164|"],
+      "anchor": "none",
+      "text": "Level"
+    },
+    {
+      "id": "txtJewelsLabel",
+      "font": "font3",
+      "position": ["|$.#scale * 40|", "|$.#scale * 196|"],
+      "anchor": "none",
+      "text": "Jewels"
+    },
+    {
+      "id": "txtScoreRound",
+      "font": "font4Pink",
+      "position": ["|$.#scale * 105|", "|$.#scale * 89|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%currentLevel.scoreRound%",
+      "bindWhenHidden": true,
+      "onChange": {
+        "name": "if.notEqual",
+        "param1": "%currentLevel.scoreRound%",
+        "param2": 0,
+        "then": [
+          { "name": "drawable.visible", "id": "txtScoreRound", "visible": true },
+          {
+            "name": "switch",
+            "param": "%currentLevel.chain%",
+            "case": [
+              {
+                "value": 1,
+                "action": { "name": "text.setFont", "id": "txtScoreRound", "font": "font4Pink" }
+              },
+              {
+                "value": 2,
+                "action": { "name": "text.setFont", "id": "txtScoreRound", "font": "font4Cyan" }
+              },
+              {
+                "value": 3,
+                "action": { "name": "text.setFont", "id": "txtScoreRound", "font": "font4Green" }
+              },
+              {
+                "value": 4,
+                "action": { "name": "text.setFont", "id": "txtScoreRound", "font": "font4Yellow" }
+              },
+              {
+                "value": 5,
+                "action": { "name": "text.setFont", "id": "txtScoreRound", "font": "font4Orange" }
+              }
+            ],
+            "default": { "name": "text.setFont", "id": "txtScoreRound", "font": "font4Red" }
+          }
+        ],
+        "else": { "name": "drawable.visible", "id": "txtScoreRound", "visible": false }
+      }
+    },
+    {
+      "id": "txtTime",
+      "font": "font4Cyan",
+      "position": ["|$.#scale * 105|", "|$.#scale * 89|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%currentLevel.timeLeft.MSS%",
+      "onChange": {
+        "name": "if.greater",
+        "param1": "%currentLevel.timeLeft%",
+        "param2": 60,
+        "then": { "name": "text.setFont", "id": "txtTime", "font": "font4Cyan" },
+        "else": { "name": "text.setFont", "id": "txtTime", "font": "font4Red" }
+      }
+    },
+    {
+      "id": "txtScore",
+      "font": "font3",
+      "position": ["|$.#scale * 104|", "|$.#scale * 136|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%currentLevel.score%"
+    },
+    {
+      "id": "txtLevel",
+      "font": "font3",
+      "position": ["|$.#scale * 104|", "|$.#scale * 176|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%currentLevel.level%"
+    },
+    {
+      "id": "txtJewels",
+      "font": "font3",
+      "position": ["|$.#scale * 104|", "|$.#scale * 208|"],
+      "anchor": "none",
+      "horizontalAlign": "right",
+      "binding": "%currentLevel.jewels%"
+    }
+  ],
+  "action": [
+    {
+      "name": "if.equal",
+      "param1": "%gameTimeTrial%",
+      "param2": true,
+      "then": { "name": "drawable.delete", "id": "txtScoreRound" },
+      "else": { "name": "drawable.delete", "id": "txtTime" }
+    },
+    {
+      "name": "action.set",
+      "id": "startGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%gameTimeTrial%",
+        "param2": true,
+        "then": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|", "timeLimit": "3:00" },
+        "else": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|" }
+      }
+    }
+  ],
+  "load": "level/load.json",
+  "load": "ui/play/pause.json",
+  "load": "ui/play/gameStart.json"
+}

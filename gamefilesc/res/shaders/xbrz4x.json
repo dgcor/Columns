@@ -1,0 +1,9 @@
+{
+  "shader": {
+    "id": "xbrz4x",
+    "fragmentFile": "res/shaders/xbrz4x.frag",
+    "vertexFile": "res/shaders/xbrz4x.vert",
+    "uniforms": ["fade", "gamma", "textureSize"],
+    "setShader": "game"
+  }
+}

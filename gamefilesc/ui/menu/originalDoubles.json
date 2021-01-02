@@ -1,0 +1,16 @@
+{
+  "action": [
+    {
+      "name": "action.set",
+      "id": "newGame",
+      "action": [
+        { "name": "resource.popAll", "id": "menu" },
+        { "name": "load", "file": "ui/play/originalDoubles.json" }
+      ]
+    },
+    { "name": "variable.set", "key": "gameType", "value": "original" },
+    { "name": "variable.set", "key": "player2", "value": false },
+    { "name": "variable.set", "key": "doubles", "value": true }
+  ],
+  "load": "ui/menu/menuOriginal.json"
+}

@@ -1,0 +1,70 @@
+{
+  "action": [
+    {
+      "name": "action.set",
+      "id": "playSound1",
+      "action": { "name": "sound.loadPlay", "file": "sfx/1.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound2",
+      "action": { "name": "sound.loadPlay", "file": "sfx/2.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound3",
+      "action": { "name": "sound.loadPlay", "file": "sfx/3.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound4",
+      "action": { "name": "sound.loadPlay", "file": "sfx/4.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound5",
+      "action": { "name": "sound.loadPlay", "file": "sfx/5.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound6",
+      "action": { "name": "sound.loadPlay", "file": "sfx/6.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound7",
+      "action": { "name": "sound.loadPlay", "file": "sfx/7.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "playSound8",
+      "action": { "name": "sound.loadPlay", "file": "sfx/8.ogg" }
+    },
+    {
+      "name": "action.set",
+      "id": "focus.click",
+      "action": { "name": "focus.click" }
+    },
+    {
+      "name": "action.set",
+      "id": "focus.moveDown",
+      "action": { "name": "focus.moveDown" }
+    },
+    {
+      "name": "action.set",
+      "id": "focus.moveUp",
+      "action": { "name": "focus.moveUp" }
+    },
+    {
+      "name": "action.set",
+      "id": "focus.update",
+      "action": { "name": "focus.update" }
+    },
+    {
+      "replaceVars": "value",
+      "name": "action.set",
+      "id": "anchorArrow",
+      "action": { "name": "drawable.anchorToFocused", "id": "arrow", "offset": ["|$.#scale * (-8)|", "|$.#scale * 9|"] }
+    }
+  ]
+}

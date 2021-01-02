@@ -1,0 +1,47 @@
+{
+  "replaceVars": "value",
+  "texture": [
+    {
+      "id": "background",
+      "color": "0x000000",
+      "size": [1, 1]
+    },
+    {
+      "id": "empty",
+      "color": "0x00000000",
+      "size": [1, 1]
+    },
+    { "file": "gfx|scale|x/font1.png" },
+    { "file": "gfx|scale|x/font2.png" },
+    { "file": "gfx|scale|x/font3.png" },
+    { "file": "gfx|scale|x/font4.png" },
+    { "file": "gfx|scale|x/jewels.png" }
+  ],
+  "texturePack": [
+    {
+      "id": "player1",
+      "texture": "font1",
+      "rects": [
+        { "rect": ["|$.#scale * 496|", 0, "|$.#scale * 8|", "|$.#scale * 8|"] },
+        { "rect": [0, 0, "|$.#scale * 8|", "|$.#scale * 8|"] }
+      ]
+    },
+    {
+      "id": "player2",
+      "texture": "font1",
+      "rects": [
+        { "rect": ["|$.#scale * 512|", 0, "|$.#scale * 8|", "|$.#scale * 8|"] },
+        { "rect": [0, 0, "|$.#scale * 8|", "|$.#scale * 8|"] }
+      ]
+    },
+    {
+      "id": "select",
+      "texture": "font1",
+      "rects": [
+        { "rect": ["|$.#scale * 480|", 0, "|$.#scale * 8|", "|$.#scale * 8|"] },
+        { "rect": [0, 0, "|$.#scale * 8|", "|$.#scale * 8|"] }
+      ]
+    }
+  ],
+  "load": "res/levelTextures.json"
+}

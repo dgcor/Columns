@@ -1,0 +1,36 @@
+/*.cbp
+/*.db
+/*.depend
+/*.dll
+/*.exe
+/*.layout
+/*.opendb
+/*.vcxproj.filters
+/*.vcxproj.user
+/*.zip
+/.svn
+/.vs
+/bin
+/CMakeCache.txt
+/CMakeFiles
+/cmake_install.cmake
+/Columns
+/Debug
+/Debug Clang
+/Debug Code Analysis
+/Debug NoMovie
+/gamefilesc/bgm/*.ogg
+/gamefilesc/gfx2x/*
+/gamefilesc/gfx3x/*
+/gamefilesc/gfx4x/*
+/gamefilesc/res/icon.png
+/images
+/Makefile
+/obj
+/portable
+/Project.dir
+/Release
+/Release NoMovie
+/Release Static
+/Release Static NoMovie
+/x64

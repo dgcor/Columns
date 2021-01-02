@@ -1,0 +1,10 @@
+{
+  "keepAR": "|game.keepAR|",
+  "stretchToFit": "|game.stretchToFit|",
+  "smoothScreen": "|game.smoothScreen|",
+  "framerate": "|game.framerate|",
+  "variable": {
+    "scale": "|newScale|",
+    "shader": "|newShader|"
+  }
+}

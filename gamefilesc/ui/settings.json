@@ -1,0 +1,276 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "popup",
+    "ignorePrevious": true
+  },
+  "inputEvent": {
+    "key": ["f1", "enter", "esc", " "],
+    "action": { "name": "button.click", "id": "back" }
+  },
+  "replaceVars": "value",
+  "variable": {
+    "newScale": "|scale|",
+    "newShader": "|shader|"
+  },
+  "texture": { "file": "gfx|scale|x/options.png" },
+  "image": {
+    "id": "background",
+    "texture": "options",
+    "anchor": "none"
+  },
+  "button": [
+    {
+      "id": "scale",
+      "font": "font1White",
+      "focus": true,
+      "binding": "%newScale%",
+      "format": "Scale: [1]x",
+      "position": ["center", "|$.#scale * 50|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "onClick": {
+        "name": "switch",
+        "param": "%newScale%",
+        "case": [
+          {
+            "value": 1,
+            "action": { "name": "variable.set", "key": "newScale", "value": 2 }
+          },
+          {
+            "value": 2,
+            "action": { "name": "variable.set", "key": "newScale", "value": 3 }
+          },
+          {
+            "value": 3,
+            "action": { "name": "variable.set", "key": "newScale", "value": 4 }
+          },
+          {
+            "value": 4,
+            "action": { "name": "variable.set", "key": "newScale", "value": 1 }
+          }
+        ],
+        "default": 1
+      }
+    },
+    {
+      "id": "stretchToFit",
+      "font": "font1White",
+      "focus": true,
+      "position": ["center", "|$.#scale * 70|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "onClick": {
+        "name": "if.equal",
+        "param1": "%game.stretchToFit%",
+        "param2": false,
+        "then": [
+          { "name": "loadJson", "json": { "stretchToFit": true } },
+          { "name": "text.setText", "id": "stretchToFit", "text": "Stretch to Fit: On" }
+        ],
+        "else": [
+          { "name": "loadJson", "json": { "stretchToFit": false } },
+          { "name": "text.setText", "id": "stretchToFit", "text": "Stretch to Fit: Off" }
+        ]
+      }
+    },
+    {
+      "id": "keepAR",
+      "font": "font1White",
+      "focus": true,
+      "position": ["center", "|$.#scale * 90|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "onClick": {
+        "name": "if.equal",
+        "param1": "%game.keepAR%",
+        "param2": false,
+        "then": [
+          { "name": "loadJson", "json": { "keepAR": true } },
+          { "name": "text.setText", "id": "keepAR", "text": "Keep Ratio: On" }
+        ],
+        "else": [
+          { "name": "loadJson", "json": { "keepAR": false } },
+          { "name": "text.setText", "id": "keepAR", "text": "Keep Ratio: Off" }
+        ]
+      }
+    },
+    {
+      "id": "smoothScreen",
+      "font": "font1White",
+      "focus": true,
+      "position": ["center", "|$.#scale * 110|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "onClick": {
+        "name": "if.equal",
+        "param1": "%game.smoothScreen%",
+        "param2": false,
+        "then": [
+          { "name": "loadJson", "json": { "smoothScreen": true } },
+          { "name": "text.setText", "id": "smoothScreen", "text": "Smooth Screen: On" }
+        ],
+        "else": [
+          { "name": "loadJson", "json": { "smoothScreen": false } },
+          { "name": "text.setText", "id": "smoothScreen", "text": "Smooth Screen: Off" }
+        ]
+      }
+    },
+    {
+      "id": "shader",
+      "font": "font1White",
+      "focus": true,
+      "binding": "%newShader%",
+      "format": "Shader: [1]",
+      "position": ["center", "|$.#scale * 130|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "onClick": {
+        "name": "switch",
+        "param": "%newShader%",
+        "case": [
+          {
+            "value": "default",
+            "action": [
+              { "name": "load", "file": "res/shaders/lanczos.json" },
+              { "name": "variable.set", "key": "newShader", "value": "lanczos" }
+            ]
+          },
+          {
+            "value": "lanczos",
+            "action": [
+              { "name": "load", "file": "res/shaders/scale4xhq.json" },
+              { "name": "variable.set", "key": "newShader", "value": "scale4xhq" }
+            ]
+          },
+          {
+            "value": "scale4xhq",
+            "action": [
+              { "name": "load", "file": "res/shaders/xbrz4x.json" },
+              { "name": "variable.set", "key": "newShader", "value": "xbrz4x" }
+            ]
+          },
+          {
+            "value": "xbrz4x",
+            "action": [
+              { "name": "load", "file": "res/shaders/default.json" },
+              { "name": "variable.set", "key": "newShader", "value": "default" }
+            ]
+          }
+        ],
+        "default": "default"
+      }
+    },
+    {
+      "id": "framerate",
+      "font": "font1White",
+      "focus": true,
+      "position": ["center", "|$.#scale * 150|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "onClick": {
+        "name": "switch",
+        "param": "%game.framerate%",
+        "case": [
+          {
+            "value": 0,
+            "action": [
+              { "name": "loadJson", "json": { "framerate": 30 } },
+              {
+                "name": "text.setText",
+                "id": "framerate",
+                "binding": "%game.framerate%",
+                "format": "Framerate Limit: [1]"
+              }
+            ]
+          },
+          {
+            "value": 30,
+            "action": [
+              { "name": "loadJson", "json": { "framerate": 60 } },
+              {
+                "name": "text.setText",
+                "id": "framerate",
+                "binding": "%game.framerate%",
+                "format": "Framerate Limit: [1]"
+              }
+            ]
+          },
+          {
+            "value": 60,
+            "action": [
+              { "name": "loadJson", "json": { "framerate": 120 } },
+              {
+                "name": "text.setText",
+                "id": "framerate",
+                "binding": "%game.framerate%",
+                "format": "Framerate Limit: [1]"
+              }
+            ]
+          },
+          {
+            "value": 120,
+            "action": [
+              { "name": "loadJson", "json": { "framerate": 0 } },
+              {
+                "name": "text.setText",
+                "id": "framerate",
+                "text": "Framerate Limit: Off"
+              }
+            ]
+          }
+        ],
+        "default": { "name": "loadJson", "json": { "framerate": 60 } }
+      }
+    },
+    {
+      "id": "back",
+      "font": "font1White",
+      "focus": true,
+      "position": ["center", "|$.#scale * 170|"],
+      "anchor": "none",
+      "horizontalAlign": "center",
+      "text": "OK",
+      "onClick": [
+        { "name": "load", "file": "ui/saveSettings.json" },
+        {
+          "name": "if.equal",
+          "param1": "%newScale%",
+          "param2": "%scale%",
+          "then": { "name": "resource.pop" },
+          "else": { "name": "game.load", "file": "gamefilesc" }
+        }
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "if.equal",
+      "param1": "%game.stretchToFit%",
+      "param2": true,
+      "then": { "name": "text.setText", "id": "stretchToFit", "text": "Stretch to Fit: On" },
+      "else": { "name": "text.setText", "id": "stretchToFit", "text": "Stretch to Fit: Off" }
+    },
+    {
+      "name": "if.equal",
+      "param1": "%game.keepAR%",
+      "param2": true,
+      "then": { "name": "text.setText", "id": "keepAR", "text": "Keep Ratio: On" },
+      "else": { "name": "text.setText", "id": "keepAR", "text": "Keep Ratio: Off" }
+    },
+    {
+      "name": "if.equal",
+      "param1": "%game.smoothScreen%",
+      "param2": true,
+      "then": { "name": "text.setText", "id": "smoothScreen", "text": "Smooth Screen: On" },
+      "else": { "name": "text.setText", "id": "smoothScreen", "text": "Smooth Screen: Off" }
+    },
+    {
+      "name": "if.equal",
+      "param1": "%game.framerate%",
+      "param2": 0,
+      "then": { "name": "text.setText", "id": "framerate", "text": "Framerate Limit: Off" },
+      "else": { "name": "text.setText", "id": "framerate", "binding": "%game.framerate%", "format": "Framerate Limit: [1]" }
+    }
+  ]
+}

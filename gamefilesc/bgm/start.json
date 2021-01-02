@@ -1,0 +1,8 @@
+{
+  "audio": {
+    "id": "start",
+    "file": "bgm/02 - Quagmire (Start).ogg",
+    "loop": false,
+    "play": true
+  }
+}

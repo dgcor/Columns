@@ -1,0 +1,39 @@
+{
+  "action": {
+    "name": "resource.add",
+    "id": "mainMenuStart"
+  },
+  "inputEvent": [
+    {
+      "key": "f1",
+      "action": null
+    },
+    {
+      "key": ["enter", " "],
+      "action": "focus.click"
+    }
+  ],
+  "replaceVars": "value",
+  "button": {
+    "id": "btnPressStart",
+    "anchor": "none",
+    "texture": "empty",
+    "anchor": "all",
+    "textureRect": ["|game.refSize.x|", "|game.refSize.y|"],
+    "captureInputEvents": true,
+    "resizable": true,
+    "focus": true,
+    "onClick": [
+      { "name": "resource.pop", "id": "mainMenuStart" },
+      { "name": "drawable.visible", "id": "menuPanel", "visible": true },
+      "playSound3"
+    ]
+  },
+  "animation": {
+    "id": "pressStart",
+    "texturePack": "pressStart",
+    "position": ["|$.#scale * 98|", "|$.#scale * 176|"],
+    "anchor": "none",
+    "refresh": 500
+  }
+}
