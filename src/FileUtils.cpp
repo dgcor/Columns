@@ -3,23 +3,19 @@
 #include <filesystem>
 #include <memory>
 #include <fstream>
-#include "PhysFSStream.h"
+#include "SFML/PhysFSStream.h"
 #include "Utils/Utils.h"
 
 namespace FileUtils
 {
-#ifdef FALLBACK_TO_LOWERCASE_FILENAME
-	static constexpr bool FALLBACK_TO_LOWERCASE = true;
-#else
-	static constexpr bool FALLBACK_TO_LOWERCASE = false;
-#endif
-
 	void initPhysFS(const char* argv0)
 	{
 		static const char* mainArgv0 = argv0;
 		deinitPhysFS();
-		PHYSFS_init(mainArgv0);
-		PHYSFS_permitSymbolicLinks(1);
+		if (PHYSFS_init(mainArgv0) != 0)
+		{
+			PHYSFS_permitSymbolicLinks(1);
+		}
 	}
 
 	void deinitPhysFS()
@@ -267,14 +263,13 @@ namespace FileUtils
 	bool exists(const char* filePath) noexcept
 	{
 		auto fileExists = PHYSFS_exists(filePath) != 0;
-		if constexpr (FALLBACK_TO_LOWERCASE == true)
+#ifdef DGENGINE_FALLBACK_TO_LOWERCASE
+		if (fileExists == false)
 		{
-			if (fileExists == false)
-			{
-				auto lowerCasefilePath = Utils::toLower(filePath);
-				fileExists = PHYSFS_exists(lowerCasefilePath.c_str()) != 0;
-			}
+			auto lowerCasefilePath = Utils::toLower(filePath);
+			fileExists = PHYSFS_exists(lowerCasefilePath.c_str()) != 0;
 		}
+#endif
 		return fileExists;
 	}
 

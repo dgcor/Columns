@@ -22,12 +22,6 @@
 #include "PhysFSStream.h"
 #include "Utils/Utils.h"
 
-#ifdef FALLBACK_TO_LOWERCASE_FILENAME
-static constexpr bool FALLBACK_TO_LOWERCASE = true;
-#else
-static constexpr bool FALLBACK_TO_LOWERCASE = false;
-#endif
-
 sf::PhysFSStream::PhysFSStream(const std::string_view fileName)
 {
 	load(fileName);
@@ -47,14 +41,13 @@ bool sf::PhysFSStream::load(const std::string_view fileName)
 	{
 		file = PHYSFS_openRead(fileName.data());
 	}
-	if constexpr (FALLBACK_TO_LOWERCASE == true)
+#ifdef DGENGINE_FALLBACK_TO_LOWERCASE
+	if (file == nullptr)
 	{
-		if (file == nullptr)
-		{
-			auto lowerCaseFileName = Utils::toLower(fileName);
-			file = PHYSFS_openRead(lowerCaseFileName.c_str());
-		}
+		auto lowerCaseFileName = Utils::toLower(fileName);
+		file = PHYSFS_openRead(lowerCaseFileName.c_str());
 	}
+#endif
 	return (file != nullptr);
 }
 

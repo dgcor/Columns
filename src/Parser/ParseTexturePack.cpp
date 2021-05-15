@@ -535,7 +535,7 @@ namespace Parser
 			for (auto it = strIndexes.begin(), itEnd = strIndexes.end(); it < itEnd;)
 			{
 				sf::Uint32 ch;
-				it = std::move(sf::Utf8::decode(it, itEnd, ch));
+				it = sf::Utf8::decode(it, itEnd, ch);
 				texturePack2->mapTextureIndex(ch);
 			}
 			if (isValidArray(elem, "textureIndexes") == true)

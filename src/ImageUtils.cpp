@@ -1,6 +1,6 @@
 #include "ImageUtils.h"
 #include "CachedImagePack.h"
-#include "PhysFSStream.h"
+#include "SFML/PhysFSStream.h"
 #include "Utils/NumberVector.h"
 
 namespace ImageUtils

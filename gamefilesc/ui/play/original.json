@@ -66,7 +66,7 @@
       "anchor": "none",
       "horizontalAlign": "right",
       "binding": "%currentLevel.scoreRound%",
-      "bindWhenHidden": true,
+      "bindingFlags": "WhenHidden",
       "onChange": {
         "name": "if.notEqual",
         "param1": "%currentLevel.scoreRound%",

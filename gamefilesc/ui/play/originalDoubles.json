@@ -66,7 +66,7 @@
       "anchor": "none",
       "horizontalAlign": "right",
       "binding": "%currentLevel.player1.scoreRound%",
-      "bindWhenHidden": true,
+      "bindingFlags": "WhenHidden",
       "onChange": {
         "name": "if.notEqual",
         "param1": "%currentLevel.player1.scoreRound%",
@@ -171,7 +171,7 @@
       "anchor": "none",
       "horizontalAlign": "right",
       "binding": "%currentLevel.player2.scoreRound%",
-      "bindWhenHidden": true,
+      "bindingFlags": "WhenHidden",
       "onChange": {
         "name": "if.notEqual",
         "param1": "%currentLevel.player2.scoreRound%",

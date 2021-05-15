@@ -5,7 +5,10 @@ project(Columns)
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++")
     add_definitions(-Wall -stdlib=libc++)
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 11.0)
+        message(FATAL_ERROR "GCC version must be at least 11!")
+    endif()
     if(NOT BEOS)
         add_definitions(-Wall)
     endif()
@@ -13,10 +16,10 @@ endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake_modules")
 
-option(DGENGINE_MOVIE_SUPPORT "Enable Movie support" TRUE)
-option(DGENGINE_FALLBACK_TO_LOWERCASE_FILENAME "Enable falling back to all lowercase names if file is not found" TRUE)
+option(MOVIE_SUPPORT "Enable Movie support" TRUE)
+option(FALLBACK_TO_LOWERCASE "Enable falling back to all lowercase names if file is not found" TRUE)
 
-if(DGENGINE_MOVIE_SUPPORT)
+if(MOVIE_SUPPORT)
     find_package(FFmpeg COMPONENTS avcodec avformat avutil swscale)
 endif()
 find_package(PhysFS REQUIRED)
@@ -37,6 +40,7 @@ set(SOURCE_FILES
     src/BaseAnimation.h
     src/BindableText.cpp
     src/BindableText.h
+    src/BindingFlags.h
     src/BitmapButton.cpp
     src/BitmapButton.h
     src/BitmapFont.cpp
@@ -94,8 +98,6 @@ set(SOURCE_FILES
     src/Palette.h
     src/Panel.cpp
     src/Panel.h
-    src/PhysFSStream.cpp
-    src/PhysFSStream.h
     src/Queryable.h
     src/Rectangle.cpp
     src/Rectangle.h
@@ -280,6 +282,8 @@ set(SOURCE_FILES
     src/SFML/Music2.h
     src/SFML/MusicLoops.cpp
     src/SFML/MusicLoops.h
+    src/SFML/PhysFSStream.cpp
+    src/SFML/PhysFSStream.h
     src/SFML/SFMLUtils.cpp
     src/SFML/SFMLUtils.h
     src/SFML/Sprite2.cpp
@@ -321,6 +325,9 @@ set(SOURCE_FILES
     src/Utils/Number.h
     src/Utils/NumberVector.h
     src/Utils/PairXY.h
+    src/Utils/re.c
+    src/Utils/re.h
+    src/Utils/Regex.h
     src/Utils/ReverseIterable.h
     src/Utils/UnorderedStringMap.h
     src/Utils/Utils.cpp
@@ -348,11 +355,11 @@ if(FFmpeg_FOUND)
         src/sfeMovie/VideoStream.hpp
     )
 else()
-    add_definitions(-DUSE_SFML_MOVIE_STUB)
+    add_definitions(-DDGENGINE_MOVIE_STUB)
 endif()
 
-if(DGENGINE_FALLBACK_TO_LOWERCASE_FILENAME)
-    add_definitions(-DFALLBACK_TO_LOWERCASE_FILENAME)
+if(FALLBACK_TO_LOWERCASE)
+    add_definitions(-DDGENGINE_FALLBACK_TO_LOWERCASE)
 endif()
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
