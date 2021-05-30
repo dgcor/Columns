@@ -2,16 +2,19 @@
 #include "FileUtils.h"
 #include "Game.h"
 #include <iostream>
+#include "RegisterHooks.h"
 
 int main(int argc, char* argv[])
 {
+	Hooks::registerHooks();
+
 	FileUtils::initPhysFS(argv[0]);
 
 	try
 	{
 		Game game;
 
-		if (CmdLineUtils::processCmdLine(argc, (const char **)argv) == false)
+		if (CmdLineUtils::processCmdLine(argc, (const char**)argv) == false)
 		{
 			if (argc == 2)
 			{

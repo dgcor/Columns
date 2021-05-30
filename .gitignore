@@ -15,6 +15,7 @@
 /CMakeFiles
 /cmake_install.cmake
 /Columns
+/Columns.dir
 /Debug
 /Debug Clang
 /Debug Code Analysis
@@ -28,7 +29,6 @@
 /Makefile
 /obj
 /portable
-/Project.dir
 /Release
 /Release NoMovie
 /Release Static

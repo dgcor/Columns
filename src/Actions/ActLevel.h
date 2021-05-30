@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Action.h"
+#include "Actions/Action.h"
 #include "Game.h"
 #include "GameUtils.h"
 #include "Game/Level.h"
@@ -24,7 +24,7 @@ public:
 
 	bool execute(Game& game) override
 	{
-		auto level = game.Resources().getLevel(id);
+		auto level = game.Resources().getLevel<Level>(id);
 		if (level != nullptr)
 		{
 			level->addHighScore(levelScore);
@@ -46,7 +46,7 @@ public:
 
 	bool execute(Game& game) override
 	{
-		auto level = game.Resources().getLevel(id);
+		auto level = game.Resources().getLevel<Level>(id);
 		if (level != nullptr)
 		{
 			level->moveSelectedJewels(game, offset, addDropPoints);
@@ -73,7 +73,7 @@ public:
 
 	bool execute(Game& game) override
 	{
-		auto level = game.Resources().getLevel(id);
+		auto level = game.Resources().getLevel<Level>(id);
 		if (level != nullptr)
 		{
 			level->newGame(gameType, timeLimit, numPlayers, height, initialLevel);
@@ -93,7 +93,7 @@ public:
 
 	bool execute(Game& game) noexcept override
 	{
-		auto level = game.Resources().getLevel(id);
+		auto level = game.Resources().getLevel<Level>(id);
 		if (level != nullptr)
 		{
 			level->Pause(pause);
@@ -114,32 +114,10 @@ public:
 
 	bool execute(Game& game) override
 	{
-		auto level = game.Resources().getLevel(id);
+		auto level = game.Resources().getLevel<Level>(id);
 		if (level != nullptr)
 		{
 			level->rotateSelectedJewels(game, reverse);
-		}
-		return true;
-	}
-};
-
-class ActLevelSave : public Action
-{
-private:
-	std::string id;
-	std::string file;
-	Save::Properties props;
-
-public:
-	ActLevelSave(const std::string_view id_, const std::string_view file_,
-		Save::Properties&& props_) : id(id_), file(file_), props(std::move(props_)) {}
-
-	bool execute(Game& game) override
-	{
-		auto level = game.Resources().getLevel(id);
-		if (level != nullptr)
-		{
-			level->save(GameUtils::replaceStringWithVarOrProp(file, game), props, game);
 		}
 		return true;
 	}
@@ -157,7 +135,7 @@ public:
 
 	bool execute(Game& game) override
 	{
-		auto level = game.Resources().getLevel(id);
+		auto level = game.Resources().getLevel<Level>(id);
 		if (level != nullptr)
 		{
 			auto shader = game.Resources().Shaders().get(idShader);

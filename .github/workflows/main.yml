@@ -72,7 +72,7 @@ jobs:
     - name: MSBuild Columns
       run: |
         vcpkg integrate install
-        msbuild Project.vcxproj /p:Configuration="Release Static NoMovie" /p:Platform=Win32
+        msbuild Columns.vcxproj /p:Configuration="Release Static NoMovie" /p:Platform=Win32
 
     - name: Create Columns.zip
       run: 7z a Columns.zip "./Release Static NoMovie/*.exe" LICENSE.* README.* main.json gamefiles*

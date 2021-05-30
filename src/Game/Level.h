@@ -5,10 +5,9 @@
 #include "Formula.h"
 #include <functional>
 #include "Jewel.h"
-#include "LevelSurface.h"
 #include <memory>
-#include "Save/SaveLevel.h"
 #include "SFML/Sprite2.h"
+#include "SFML/Surface.h"
 #include "SFML/View2.h"
 #include "TexturePacks/TexturePack.h"
 #include "UIObject.h"
@@ -78,7 +77,7 @@ private:
 		GameOver
 	};
 
-	LevelSurface surface;
+	Surface surface;
 	GameShader* gameShader{ nullptr };
 
 	std::vector<LevelCell> cells;
@@ -150,11 +149,6 @@ private:
 	uint16_t moveDownEventHash{ 0 };
 	uint16_t moveLeftEventHash{ 0 };
 	uint16_t moveRightEventHash{ 0 };
-
-	friend void Save::save(const std::string_view filePath,
-		const Save::Properties& props, const Game& game, const Level& level);
-	friend void Save::serialize(void* serializeObj,
-		const Save::Properties& props, const Game& game, const Level& level);
 
 	sf::Vector2f toDrawCoord(int16_t x, int16_t y) const;
 	sf::Vector2f toDrawCoord(float x, float y) const;
@@ -230,24 +224,10 @@ public:
 	bool Visible() const noexcept override { return surface.visible; }
 	void Visible(bool visible) noexcept override { surface.visible = visible; }
 
-	void save(const std::string_view filePath,
-		const Save::Properties& props, const Game& game) const
-	{
-		Save::save(filePath, props, game, *this);
-	}
-	void serialize(void* serializeObj, const Save::Properties& props,
-		const Game& game, const Level& level)
-	{
-		Save::serialize(serializeObj, props, game, *this);
-	}
-
 	void draw(const Game& game, sf::RenderTarget& target) const override;
 	void update(Game& game) override;
 	bool getProperty(const std::string_view prop, Variable& var) const override;
 	const Queryable* getQueryable(const std::string_view prop) const override;
-
-	std::vector<std::variant<const Queryable*, Variable>> getQueryableList(
-		const std::string_view prop) const;
 
 	// game related
 
