@@ -4,31 +4,6 @@
     "id": "play",
     "ignorePrevious": true
   },
-  "inputEvent": [
-    {
-      "key": "esc",
-      "action": [
-        { "name": "resource.pop" },
-        { "name": "event.deleteAll" }
-      ]
-    },
-    {
-      "key": [" ", "rshift"],
-      "action": { "name": "level.rotateJewels" }
-    },
-    {
-      "key": "down",
-      "event": "level.down"
-    },
-    {
-      "key": "left",
-      "event": "level.left"
-    },
-    {
-      "key": "right",
-      "event": "level.right"
-    }
-  ],
   "replaceVars": "value",
   "texture": { "file": "gfx|scale|x/original1p.png" },
   "button": {
@@ -144,17 +119,14 @@
       "binding": "%currentLevel.jewels%"
     }
   ],
+  "replaceVars": false,
+  "load": "level/load.json",
+  "load": "ui/play/pause.json",
   "action": [
     {
-      "name": "if.equal",
-      "param1": "%gameTimeTrial%",
-      "param2": true,
-      "then": { "name": "drawable.delete", "id": "txtScoreRound" },
-      "else": { "name": "drawable.delete", "id": "txtTime" }
-    },
-    {
+      "replaceVars": "value",
       "name": "action.set",
-      "id": "startGame",
+      "id": "newGame",
       "action": {
         "name": "if.equal",
         "param1": "%gameTimeTrial%",
@@ -162,9 +134,77 @@
         "then": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|", "timeLimit": "3:00" },
         "else": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|" }
       }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveOriginal.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "file": "saveOriginal.json" },
+          "loadAndPlayBGM",
+          "pauseGame"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level.gameOver%",
+        "param2": false,
+        "then": [
+          { "name": "level.saveGame", "file": "saveOriginal.json" },
+          {
+            "name": "file.copy",
+            "file": "level/saveVarsFile.json",
+            "writeFile": "saveOriginalVars.json",
+            "replace": "value"
+          }
+        ],
+        "else": [
+          { "name": "io.delete", "file": "saveOriginalVars.json" },
+          { "name": "io.delete", "file": "saveOriginal.json" }
+        ]
+      }
+    },
+    "loadOrStartGame",
+    {
+      "name": "if.equal",
+      "param1": "%gameTimeTrial%",
+      "param2": true,
+      "then": { "name": "drawable.delete", "id": "txtScoreRound" },
+      "else": { "name": "drawable.delete", "id": "txtTime" }
     }
   ],
-  "load": "level/load.json",
-  "load": "ui/play/pause.json",
-  "load": "ui/play/gameStart.json"
+  "inputEvent": [
+    {
+      "gameInputEvent": "esc",
+      "action": [
+        "saveGame",
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "gameInputEvent": "rotateJewels",
+      "event": "level.rotate"
+    },
+    {
+      "gameInputEvent": "down",
+      "event": "level.down"
+    },
+    {
+      "gameInputEvent": "left",
+      "event": "level.left"
+    },
+    {
+      "gameInputEvent": "right",
+      "event": "level.right"
+    }
+  ]
 }

@@ -51,15 +51,15 @@
   ],
   "inputEvent": [
     {
-      "key": "esc",
+      "gameInputEvent": "esc",
       "action": { "name": "resource.pop" }
     },
     {
-      "key": "left",
+      "gameInputEvent": "left",
       "action": "prevSound"
     },
     {
-      "key": "right",
+      "gameInputEvent": "right",
       "action": "nextSound"
     }
   ],

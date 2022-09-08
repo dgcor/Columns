@@ -1,5 +1,5 @@
 #include "RegisterHooks.h"
-#include "Game.h"
+#include "Game/Game.h"
 #include "Hooks.h"
 #include "Parser/ParseAction2.h"
 #include "Parser/ParseFile2.h"

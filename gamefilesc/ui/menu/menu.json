@@ -6,11 +6,11 @@
   },
   "inputEvent": [
     {
-      "key": "esc",
+      "gameInputEvent": "esc",
       "action": { "name": "resource.pop" }
     },
     {
-      "key": "left",
+      "gameInputEvent": "left",
       "action": {
         "name": ">",
         "param1": "%menu.currentIdx%",
@@ -24,7 +24,7 @@
       }
     },
     {
-      "key": "right",
+      "gameInputEvent": "right",
       "action": {
         "name": "<=",
         "param1": "%menu.currentIdx%",

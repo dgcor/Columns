@@ -1,10 +1,16 @@
 {
-  "keepAR": "|game.keepAR|",
-  "stretchToFit": "|game.stretchToFit|",
-  "smoothScreen": "|game.smoothScreen|",
-  "framerate": "|game.framerate|",
+  "game": {
+    "position": "|game.position|",
+    "size": "|game.windowedSize|",
+    "keepAR": "|game.keepAR|",
+    "stretchToFit": "|game.stretchToFit|",
+    "smoothScreen": "|game.smoothScreen|",
+    "frameRate": "|game.frameRate|",
+    "fullScreen": "|game.fullScreen|"
+  },
   "variable": {
-    "scale": "|newScale|",
-    "shader": "|newShader|"
+    "scale": "|scale|",
+    "shader": "|shader|",
+    "bgm": "|bgm|"
   }
 }

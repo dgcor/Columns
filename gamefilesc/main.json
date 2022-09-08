@@ -1,16 +1,18 @@
 {
-  "title" : "Columns",
-  "version": "1.0",
-  "saveDir": ".columns",
-  "refWindowSize": [320, 224],
-  "minWindowSize": [320, 224],
-  "windowSize": [640, 448],
-  "framerate": 60,
-  "keepAR": true,
-  "stretchToFit": true,
-  "smoothScreen": true,
-  "load": "settings.json",
-  "load": "res/updateSettings.json",
-  "init": true,
+  "game": {
+    "title" : "Columns",
+    "version": "1.0",
+    "saveDir": ".columns",
+    "refSize": [320, 224],
+    "minSize": [320, 224],
+    "size": [640, 448],
+    "frameRate": 30,
+    "keepAR": true,
+    "stretchToFit": true,
+    "smoothScreen": true,
+    "load": "settings.json",
+    "load": "res/updateSettings.json",
+    "init": true
+  },
   "action": { "name": "load", "file": "ui/loadMain.json" }
 }

@@ -4,47 +4,6 @@
     "id": "play",
     "ignorePrevious": true
   },
-  "inputEvent": [
-    {
-      "key": "esc",
-      "action": [
-        { "name": "resource.pop" },
-        { "name": "event.deleteAll" }
-      ]
-    },
-    {
-      "key": [" ", "rshift"],
-      "action": { "name": "level.rotateJewels" }
-    },
-    {
-      "key": "down",
-      "event": "level.down"
-    },
-    {
-      "key": "left",
-      "event": "level.left"
-    },
-    {
-      "key": "right",
-      "event": "level.right"
-    },
-    {
-      "key": ["h", "lshift"],
-      "action": { "name": "level.rotateJewels", "level": "level2" }
-    },
-    {
-      "key": "s",
-      "event": "level2.down"
-    },
-    {
-      "key": "a",
-      "event": "level2.left"
-    },
-    {
-      "key": "d",
-      "event": "level2.right"
-    }
-  ],
   "replaceVars": "value",
   "texture": { "file": "gfx|scale|x/original2p.png" },
   "button": {
@@ -244,7 +203,108 @@
       "binding": "%level2.jewels%"
     }
   ],
+  "replaceVars": false,
+  "load": "level/load2.json",
+  "load": "ui/play/pause1.json",
+  "load": "ui/play/pause2.json",
   "action": [
+    {
+      "replaceVars": "value",
+      "name": "action.set",
+      "id": "newGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%gameTimeTrial%",
+        "param2": true,
+        "then": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|", "timeLimit": "3:00" },
+        "else": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|" }
+      }
+    },
+    {
+      "replaceVars": "value",
+      "name": "action.set",
+      "id": "newGame2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%gameTimeTrial%",
+        "param2": true,
+        "then": { "name": "level.newGame", "level": "level2", "type": "original", "initialLevel": "|gameLevelP2|", "timeLimit": "3:00" },
+        "else": { "name": "level.newGame", "level": "level2", "type": "original", "initialLevel": "|gameLevelP2|" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveOriginal2p.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "file": "saveOriginal2p.json" },
+          "loadAndPlayBGM",
+          "pauseGame"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart1.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame2",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveOriginal2p2.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "level": "level2", "file": "saveOriginal2p2.json" },
+          "loadAndPlayBGM",
+          "pauseGame2"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart2.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level.gameOver%",
+        "param2": false,
+        "then": [
+          { "name": "level.saveGame", "file": "saveOriginal2p.json" },
+          {
+            "name": "file.copy",
+            "file": "level/saveVarsFile.json",
+            "writeFile": "saveOriginal2pVars.json",
+            "replace": "value"
+          }
+        ],
+        "else": [
+          { "name": "io.delete", "file": "saveOriginal2pVars.json" },
+          { "name": "io.delete", "file": "saveOriginal2p.json" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level2.gameOver%",
+        "param2": false,
+        "then": [
+          { "name": "level.saveGame", "level": "level2", "file": "saveOriginal2p2.json" },
+          {
+            "name": "file.copy",
+            "file": "level/saveVarsFile.json",
+            "writeFile": "saveOriginal2pVars.json",
+            "replace": "value"
+          }
+        ],
+        "else": { "name": "io.delete", "file": "saveOriginal2p2.json" }
+      }
+    },
+    "loadOrStartGame",
+    "loadOrStartGame2",
     {
       "name": "if.equal",
       "param1": "%gameTimeTrial%",
@@ -257,33 +317,49 @@
         { "name": "drawable.delete", "id": "txtTime" },
         { "name": "drawable.delete", "id": "txtTimeP2" }
       ]
-    },
-    {
-      "name": "action.set",
-      "id": "startGame",
-      "action": {
-        "name": "if.equal",
-        "param1": "%gameTimeTrial%",
-        "param2": true,
-        "then": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|", "timeLimit": "3:00" },
-        "else": { "name": "level.newGame", "type": "original", "initialLevel": "|gameLevel|" }
-      }
-    },
-    {
-      "name": "action.set",
-      "id": "startGame2",
-      "action": {
-        "name": "if.equal",
-        "param1": "%gameTimeTrial%",
-        "param2": true,
-        "then": { "name": "level.newGame", "level": "level2", "type": "original", "initialLevel": "|gameLevelP2|", "timeLimit": "3:00" },
-        "else": { "name": "level.newGame", "level": "level2", "type": "original", "initialLevel": "|gameLevelP2|" }
-      }
     }
   ],
-  "load": "level/load2.json",
-  "load": "ui/play/pause1.json",
-  "load": "ui/play/pause2.json",
-  "load": "ui/play/gameStart1.json",
-  "load": "ui/play/gameStart2.json"
+  "inputEvent": [
+    {
+      "gameInputEvent": "esc",
+      "action": [
+        "saveGame",
+        "saveGame2",
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "gameInputEvent": "rotateJewels",
+      "event": "level.rotate"
+    },
+    {
+      "gameInputEvent": "down",
+      "event": "level.down"
+    },
+    {
+      "gameInputEvent": "left",
+      "event": "level.left"
+    },
+    {
+      "gameInputEvent": "right",
+      "event": "level.right"
+    },
+    {
+      "gameInputEvent": "rotateJewels2",
+      "event": "level2.rotate"
+    },
+    {
+      "gameInputEvent": "down2",
+      "event": "level2.down"
+    },
+    {
+      "gameInputEvent": "left2",
+      "event": "level2.left"
+    },
+    {
+      "gameInputEvent": "right2",
+      "event": "level2.right"
+    }
+  ]
 }

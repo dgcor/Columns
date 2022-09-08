@@ -29,33 +29,26 @@
   ],
   "inputEvent": [
     {
-      "key": "f1",
+      "gameInputEvent": "settings",
       "action": { "name": "load", "file": "ui/settings.json" }
     },
     {
-      "key": ["enter", " "],
+      "gameInputEvent": ["enter", "space"],
       "action": "focus.click"
     },
     {
-      "key": ["up", "w"],
+      "gameInputEvent": ["up", "tabUp"],
       "action": "focus.moveUp"
     },
     {
-      "key": "tab",
-      "shift": true,
-      "action": "focus.moveUp"
-    },
-    {
-      "key": ["down", "s", "tab"],
+      "gameInputEvent": ["down", "tabDown"],
       "action": "focus.moveDown"
     },
     {
-      "key": "esc",
+      "gameInputEvent": "esc",
       "action": {
         "name": "game.fadeOut",
-        "action": {
-          "name": "game.close"
-        }
+        "action": "saveSettingsAndClose"
       }
     }
   ],

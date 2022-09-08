@@ -5,7 +5,7 @@
     { "name": "drawable.visible", "id": "level", "visible": false }
   ],
   "inputEvent": {
-    "key": "enter",
+    "gameInputEvent": "start",
     "action": [
       { "name": "level.pause", "pause": false },
       { "name": "drawable.visible", "id": "level", "visible": true },

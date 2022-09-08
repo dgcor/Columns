@@ -1,16 +1,26 @@
 {
   "action": [
+    { "name": "variable.set", "key": "gameType", "value": "flash" },
+    { "name": "variable.set", "key": "player2", "value": true },
+    { "name": "variable.set", "key": "doubles", "value": false },
+    { "name": "load", "file": "saveFlash2pVars.json" },
     {
       "name": "action.set",
-      "id": "newGame",
+      "id": "playGame",
       "action": [
         { "name": "resource.popAll", "id": "menu" },
         { "name": "load", "file": "ui/play/flash2p.json" }
       ]
     },
-    { "name": "variable.set", "key": "gameType", "value": "flash" },
-    { "name": "variable.set", "key": "player2", "value": true },
-    { "name": "variable.set", "key": "doubles", "value": false }
-  ],
-  "load": "ui/menu/menuFlashMatch.json"
+    {
+      "name": "if",
+      "params": [
+        { "name": "file.exists", "file": "saveFlash2p.json" }, "==", true,
+        "or",
+        { "name": "file.exists", "file": "saveFlash2p2.json" }, "==", true
+      ],
+      "then": "playGame",
+      "else": { "name": "load", "file": "ui/menu/menuFlashMatch.json" }
+    }
+  ]
 }

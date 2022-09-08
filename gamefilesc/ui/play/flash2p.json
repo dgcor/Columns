@@ -4,47 +4,6 @@
     "id": "play",
     "ignorePrevious": true
   },
-  "inputEvent": [
-    {
-      "key": "esc",
-      "action": [
-        { "name": "resource.pop" },
-        { "name": "event.deleteAll" }
-      ]
-    },
-    {
-      "key": [" ", "rshift"],
-      "action": { "name": "level.rotateJewels" }
-    },
-    {
-      "key": "down",
-      "event": "level.down"
-    },
-    {
-      "key": "left",
-      "event": "level.left"
-    },
-    {
-      "key": "right",
-      "event": "level.right"
-    },
-    {
-      "key": ["h", "lshift"],
-      "action": { "name": "level.rotateJewels", "level": "level2" }
-    },
-    {
-      "key": "s",
-      "event": "level2.down"
-    },
-    {
-      "key": "a",
-      "event": "level2.left"
-    },
-    {
-      "key": "d",
-      "event": "level2.right"
-    }
-  ],
   "replaceVars": "value",
   "texture": { "file": "gfx|scale|x/flash2p.png" },
   "button": {
@@ -138,7 +97,96 @@
       "horizontalAlign": "right"
     }
   ],
+  "replaceVars": false,
+  "load": "level/load2.json",
+  "load": "ui/play/pause1.json",
+  "load": "ui/play/pause2.json",
   "action": [
+    {
+      "replaceVars": "value",
+      "name": "action.set",
+      "id": "newGame",
+      "action": { "name": "level.newGame", "type": "flash", "height": "|gameHeight|" }
+    },
+    {
+      "replaceVars": "value",
+      "name": "action.set",
+      "id": "newGame2",
+      "action": { "name": "level.newGame", "level": "level2", "type": "flash", "height": "|gameHeightP2|" }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveFlash2p.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "file": "saveFlash2p.json" },
+          "loadAndPlayBGM",
+          "pauseGame"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart1.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame2",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveFlash2p2.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "level": "level2", "file": "saveFlash2p2.json" },
+          "loadAndPlayBGM",
+          "pauseGame2"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart2.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level.gameOver%",
+        "param2": false,
+        "then": [
+          { "name": "level.saveGame", "file": "saveFlash2p.json" },
+          {
+            "name": "file.copy",
+            "file": "level/saveVarsFile.json",
+            "writeFile": "saveFlash2pVars.json",
+            "replace": "value"
+          }
+        ],
+        "else": [
+          { "name": "io.delete", "file": "saveFlash2pVars.json" },
+          { "name": "io.delete", "file": "saveFlash2p.json" }
+        ]
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level2.gameOver%",
+        "param2": false,
+        "then": [
+          { "name": "level.saveGame", "level": "level2", "file": "saveFlash2p2.json" },
+          {
+            "name": "file.copy",
+            "file": "level/saveVarsFile.json",
+            "writeFile": "saveFlash2pVars.json",
+            "replace": "value"
+          }
+        ],
+        "else": { "name": "io.delete", "file": "saveFlash2p2.json" }
+      }
+    },
+    "loadOrStartGame",
+    "loadOrStartGame2",
     {
       "name": "switch",
       "param": "%gameClass%",
@@ -156,21 +204,49 @@
         { "value": "amateur", "action": { "name": "text.setText", "id": "txtClassP2", "text": "ama" } },
         { "value": "pro", "action": { "name": "text.setText", "id": "txtClassP2", "text": "pro" } }
       ]
-    },
-    {
-      "name": "action.set",
-      "id": "startGame",
-      "action": { "name": "level.newGame", "type": "flash", "height": "|gameHeight|" }
-    },
-    {
-      "name": "action.set",
-      "id": "startGame2",
-      "action": { "name": "level.newGame", "level": "level2", "type": "flash", "height": "|gameHeightP2|" }
     }
   ],
-  "load": "level/load2.json",
-  "load": "ui/play/pause1.json",
-  "load": "ui/play/pause2.json",
-  "load": "ui/play/gameStart1.json",
-  "load": "ui/play/gameStart2.json"
+  "inputEvent": [
+    {
+      "gameInputEvent": "esc",
+      "action": [
+        "saveGame",
+        "saveGame2",
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "gameInputEvent": "rotateJewels",
+      "event": "level.rotate"
+    },
+    {
+      "gameInputEvent": "down",
+      "event": "level.down"
+    },
+    {
+      "gameInputEvent": "left",
+      "event": "level.left"
+    },
+    {
+      "gameInputEvent": "right",
+      "event": "level.right"
+    },
+    {
+      "gameInputEvent": "rotateJewels2",
+      "event": "level2.rotate"
+    },
+    {
+      "gameInputEvent": "down2",
+      "event": "level2.down"
+    },
+    {
+      "gameInputEvent": "left2",
+      "event": "level2.left"
+    },
+    {
+      "gameInputEvent": "right2",
+      "event": "level2.right"
+    }
+  ]
 }

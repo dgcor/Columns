@@ -7,47 +7,6 @@
     },
     { "name": "variable.set", "key": "gameBGM", "value": "clotho" }
   ],
-  "inputEvent": [
-    {
-      "key": "esc",
-      "action": [
-        { "name": "resource.pop" },
-        { "name": "event.deleteAll" }
-      ]
-    },
-    {
-      "key": [" ", "rshift"],
-      "action": { "name": "level.rotateJewels" }
-    },
-    {
-      "key": "down",
-      "event": "level.down"
-    },
-    {
-      "key": "left",
-      "event": "level.left"
-    },
-    {
-      "key": "right",
-      "event": "level.right"
-    },
-    {
-      "key": ["h", "lshift"],
-      "action": { "name": "level.rotateJewels", "level": "level2" }
-    },
-    {
-      "key": "s",
-      "event": "level2.down"
-    },
-    {
-      "key": "a",
-      "event": "level2.left"
-    },
-    {
-      "key": "d",
-      "event": "level2.right"
-    }
-  ],
   "replaceVars": "value",
   "texture": { "file": "gfx|scale|x/arcade.png" },
   "button": {
@@ -217,21 +176,117 @@
       "binding": "%level2.jewels%"
     }
   ],
+  "replaceVars": false,
+  "load": "level/loadArcade.json",
+  "load": "ui/play/pause1.json",
+  "load": "ui/play/pause2.json",
   "action": [
     {
       "name": "action.set",
-      "id": "startGame",
+      "id": "newGame",
       "action": { "name": "level.newGame", "type": "original" }
     },
     {
       "name": "action.set",
-      "id": "startGame2",
+      "id": "newGame2",
       "action": { "name": "level.newGame", "level": "level2", "type": "original" }
-    }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveArcade.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "file": "saveArcade.json" },
+          "loadAndPlayBGM",
+          "pauseGame"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart1.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame2",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveArcade2.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "level": "level2", "file": "saveArcade2.json" },
+          "loadAndPlayBGM",
+          "pauseGame2"
+        ],
+        "else": { "name": "load", "file": "ui/play/pressStart2.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level.gameOver%",
+        "param2": false,
+        "then": { "name": "level.saveGame", "file": "saveArcade.json" },
+        "else": { "name": "io.delete", "file": "saveArcade.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame2",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level2.gameOver%",
+        "param2": false,
+        "then": { "name": "level.saveGame", "level": "level2", "file": "saveArcade2.json" },
+        "else": { "name": "io.delete", "file": "saveArcade2.json" }
+      }
+    },
+    "loadOrStartGame",
+    "loadOrStartGame2"
   ],
-  "load": "level/loadArcade.json",
-  "load": "ui/play/pause1.json",
-  "load": "ui/play/pause2.json",
-  "load": "ui/play/gameStart1.json",
-  "load": "ui/play/pressStart2.json"
+  "inputEvent": [
+    {
+      "gameInputEvent": "esc",
+      "action": [
+        "saveGame",
+        "saveGame2",
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "gameInputEvent": "rotateJewels",
+      "event": "level.rotate"
+    },
+    {
+      "gameInputEvent": "down",
+      "event": "level.down"
+    },
+    {
+      "gameInputEvent": "left",
+      "event": "level.left"
+    },
+    {
+      "gameInputEvent": "right",
+      "event": "level.right"
+    },
+    {
+      "gameInputEvent": "rotateJewels2",
+      "event": "level2.rotate"
+    },
+    {
+      "gameInputEvent": "down2",
+      "event": "level2.down"
+    },
+    {
+      "gameInputEvent": "left2",
+      "event": "level2.left"
+    },
+    {
+      "gameInputEvent": "right2",
+      "event": "level2.right"
+    }
+  ]
 }

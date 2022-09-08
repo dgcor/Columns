@@ -70,15 +70,15 @@
   ],
   "inputEvent": [
     {
-      "key": "esc",
+      "gameInputEvent": "esc",
       "action": { "name": "resource.pop" }
     },
     {
-      "key": "left",
+      "gameInputEvent": "left",
       "action": "prevDifficulty"
     },
     {
-      "key": "right",
+      "gameInputEvent": "right",
       "action": "nextDifficulty"
     }
   ],

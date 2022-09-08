@@ -11,7 +11,7 @@
           "green",
           "purple"
         ],
-        "dropSpeed": 525
+        "dropSpeed": 500
       },
       { "dropSpeed": 140 },
       { "dropSpeed": 100 },

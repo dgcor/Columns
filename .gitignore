@@ -1,3 +1,6 @@
+!.vscode/launch.json
+.vscode/*
+/*.AppImage
 /*.cbp
 /*.db
 /*.depend
@@ -21,13 +24,10 @@
 /Debug Code Analysis
 /Debug NoMovie
 /gamefilesc/bgm/*.ogg
-/gamefilesc/gfx2x/*
-/gamefilesc/gfx3x/*
-/gamefilesc/gfx4x/*
-/gamefilesc/res/icon.png
 /images
 /Makefile
 /obj
+/out
 /portable
 /Release
 /Release NoMovie

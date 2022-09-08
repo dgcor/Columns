@@ -7,43 +7,43 @@
   "load": "ui/menu/commonOriginal.json",
   "inputEvent": [
     {
-      "key": "esc",
+      "gameInputEvent": "esc",
       "action": { "name": "resource.pop" }
     },
     {
-      "key": "enter",
-      "action": "newGame"
+      "gameInputEvent": "enter",
+      "action": "playGame"
     },
     {
-      "key": "left",
+      "gameInputEvent": "left",
       "action": "prevOptionOriginal"
     },
     {
-      "key": "right",
+      "gameInputEvent": "right",
       "action": "nextOptionOriginal"
     },
     {
-      "key": "up",
+      "gameInputEvent": "up",
       "action": "upOptionOriginal"
     },
     {
-      "key": "down",
+      "gameInputEvent": "down",
       "action": "downOptionOriginal"
     },
     {
-      "key": "a",
+      "gameInputEvent": "left2",
       "action": "prevOptionOriginalP2"
     },
     {
-      "key": "d",
+      "gameInputEvent": "right2",
       "action": "nextOptionOriginalP2"
     },
     {
-      "key": "w",
+      "gameInputEvent": "up2",
       "action": "upOptionOriginalP2"
     },
     {
-      "key": "s",
+      "gameInputEvent": "down2",
       "action": "downOptionOriginalP2"
     }
   ],

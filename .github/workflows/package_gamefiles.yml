@@ -1,0 +1,45 @@
+name: Package_gamefiles
+
+on:
+  workflow_dispatch:
+
+jobs:
+  package_gamefiles:
+    name: package gamefiles
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Columns
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt install -yq --no-install-suggests --no-install-recommends ffmpeg > /dev/null
+
+    - name: Download Columns soundtrack and copy original gamefiles
+      run: |
+        wget -O Columns.zip https://project2612.org/download.php?id=149 -N
+        unzip Columns.zip
+        mv Columns/*.vgz gamefilesc/bgm
+        rm -R Columns
+
+    - name: Install vgmplay
+      run: |
+        wget https://github.com/dgcor/vgmplay-libvgm-releases/releases/download/0.51.0/vgmplay-linux-x86_64.AppImage.zip -N
+        unzip vgmplay-linux-x86_64.AppImage.zip
+        chmod +x vgmplay
+
+    - name: Convert vgz to ogg
+      run: |
+        ./vgmplay -w -c General.FadeTimePL=0 -c General.MaxLoops=1 gamefilesc/bgm/*.vgz
+        for i in gamefilesc/bgm/*.wav; do ffmpeg -i "$i" "${i%%.*}.ogg"; done
+        rm gamefilesc/bgm/*.vgz
+        rm gamefilesc/bgm/*.wav
+
+    - name: Create gamefiles zip
+      run: 7z a gamefilesc.zip ./gamefilesc/*
+
+    - name: Create gamefiles artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifact-gamefilesc
+        path: gamefilesc.zip

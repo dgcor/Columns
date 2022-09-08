@@ -5,11 +5,11 @@
   },
   "inputEvent": [
     {
-      "key": "f1",
+      "gameInputEvent": "settings",
       "action": null
     },
     {
-      "key": ["enter", " "],
+      "gameInputEvent": ["enter", "space"],
       "action": "focus.click"
     }
   ],

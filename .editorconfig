@@ -7,7 +7,7 @@ indent_size              = 4
 indent_style             = space
 insert_final_newline     = true
 
-[gamefiles**.json]
+[{*.json,.vscode/**.json,gamefiles**.json}]
 charset                  = utf-8
 end_of_line              = lf
 indent_size              = 2

@@ -1,0 +1,16 @@
+{
+  "variable": {
+    "gameBGM": "|gameBGM|",
+    "gameClass": "|gameClass|",
+    "gameClassP2": "|gameClassP2|",
+    "gameHeight": "|gameHeight|",
+    "gameHeightP2": "|gameHeightP2|",
+    "gameLevel": "|gameLevel|",
+    "gameLevelP2": "|gameLevelP2|",
+    "gameMatch": "|gameMatch|",
+    "gameTimeTrial": "|gameTimeTrial|",
+    "gameType": "|gameType|",
+    "player2": "|player2|",
+    "doubles": "|doubles|"
+  }
+}

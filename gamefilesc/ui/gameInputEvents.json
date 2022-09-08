@@ -1,0 +1,24 @@
+{
+  "gameInputEvent": [
+    { "name": "enter", "key": "enter" },
+    { "name": "space", "key": " "},
+    { "name": "esc", "key": "esc" },
+    { "name": "settings", "key": "f1" },
+    { "name": "fullScreen", "key": "enter", "alt": true },
+    { "name": "fullScreen", "key": "f11" },
+    { "name": "tabUp", "key": "tab", "shift": true },
+    { "name": "tabDown", "key": "tab" },
+    { "name": "up", "key": "up" },
+    { "name": "down", "key": "down" },
+    { "name": "left", "key": "left" },
+    { "name": "right", "key": "right" },
+    { "name": "start", "key": "enter" },
+    { "name": "rotateJewels", "key": [" ", "rshift"] },
+    { "name": "up2", "scancode": "w" },
+    { "name": "down2", "scancode": "s" },
+    { "name": "left2", "scancode": "a" },
+    { "name": "right2", "scancode": "d" },
+    { "name": "start2", "scancode": "g" },
+    { "name": "rotateJewels2", "key": "lshift", "scancode": "h" }
+  ]
+}

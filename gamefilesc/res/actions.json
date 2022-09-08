@@ -2,6 +2,25 @@
   "action": [
     {
       "name": "action.set",
+      "id": "loadBGM",
+      "action": {
+        "name": "if.equal",
+        "param1": "%bgm%",
+        "param2": true,
+        "then": { "name": "load", "file": "bgm/%gameBGM%.json" },
+        "else": { "name": "audio.delete", "id": "main" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "loadAndPlayBGM",
+      "action": [
+        "loadBGM",
+        { "name": "audio.play", "id": "main" }
+      ]
+    },
+    {
+      "name": "action.set",
       "id": "playSound1",
       "action": { "name": "sound.loadPlay", "file": "sfx/1.ogg" }
     },
@@ -65,6 +84,38 @@
       "name": "action.set",
       "id": "anchorArrow",
       "action": { "name": "drawable.anchorToFocused", "id": "arrow", "offset": ["|$.#scale * (-8)|", "|$.#scale * 9|"] }
+    },
+    {
+      "name": "action.set",
+      "id": "saveSettings",
+      "action": {
+        "name": "file.copy",
+        "file": "ui/settingsFile.json",
+        "writeFile": "settings.json",
+        "replace": "value"
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveSettingsAndClose",
+      "action": [
+        "saveSettings",
+        { "name": "game.close" }
+      ]
+    },
+    {
+      "name": "action.set",
+      "id": "fullScreen",
+      "action": [
+        {
+          "name": "if.equal",
+          "param1": "%game.fullScreen%",
+          "param2": false,
+          "then": { "name": "game.setProperty", "property": "fullScreen", "value": true },
+          "else": { "name": "game.setProperty", "property": "fullScreen", "value": false }
+        },
+        "saveSettings"
+      ]
     }
   ]
 }

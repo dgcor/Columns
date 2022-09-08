@@ -7,43 +7,43 @@
   "load": "ui/menu/commonFlashMatch.json",
   "inputEvent": [
     {
-      "key": "esc",
+      "gameInputEvent": "esc",
       "action": { "name": "resource.pop" }
     },
     {
-      "key": "enter",
-      "action": "newGame"
+      "gameInputEvent": "enter",
+      "action": "playGame"
     },
     {
-      "key": "left",
+      "gameInputEvent": "left",
       "action": "prevOptionFlashMatch"
     },
     {
-      "key": "right",
+      "gameInputEvent": "right",
       "action": "nextOptionFlashMatch"
     },
     {
-      "key": "up",
+      "gameInputEvent": "up",
       "action": "upOptionFlashMatch"
     },
     {
-      "key": "down",
+      "gameInputEvent": "down",
       "action": "downOptionFlashMatch"
     },
     {
-      "key": "a",
+      "gameInputEvent": "left2",
       "action": "prevOptionFlashMatchP2"
     },
     {
-      "key": "d",
+      "gameInputEvent": "right2",
       "action": "nextOptionFlashMatchP2"
     },
     {
-      "key": "w",
+      "gameInputEvent": "up2",
       "action": "upOptionFlashMatchP2"
     },
     {
-      "key": "s",
+      "gameInputEvent": "down2",
       "action": "downOptionFlashMatchP2"
     }
   ],

@@ -4,31 +4,6 @@
     "id": "play",
     "ignorePrevious": true
   },
-  "inputEvent": [
-    {
-      "key": "esc",
-      "action": [
-        { "name": "resource.pop" },
-        { "name": "event.deleteAll" }
-      ]
-    },
-    {
-      "key": [" ", "rshift"],
-      "action": { "name": "level.rotateJewels" }
-    },
-    {
-      "key": "down",
-      "event": "level.down"
-    },
-    {
-      "key": "left",
-      "event": "level.left"
-    },
-    {
-      "key": "right",
-      "event": "level.right"
-    }
-  ],
   "replaceVars": "value",
   "texture": { "file": "gfx|scale|x/originalDoubles.png" },
   "button": {
@@ -249,7 +224,60 @@
       "binding": "%currentLevel.player2.jewels%"
     }
   ],
+  "replaceVars": false,
+  "load": "level/load.json",
+  "load": "ui/play/pause.json",
   "action": [
+    {
+      "replaceVars": "value",
+      "name": "action.set",
+      "id": "newGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%gameTimeTrial%",
+        "param2": true,
+        "then": { "name": "level.newGame", "type": "original", "players": 2, "initialLevel": "|gameLevel|", "timeLimit": "3:00" },
+        "else": { "name": "level.newGame", "type": "original", "players": 2, "initialLevel": "|gameLevel|" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveOriginalDoubles.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "file": "saveOriginalDoubles.json" },
+          "loadAndPlayBGM",
+          "pauseGame"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level.gameOver%",
+        "param2": false,
+        "then": [
+          { "name": "level.saveGame", "file": "saveOriginalDoubles.json" },
+          {
+            "name": "file.copy",
+            "file": "level/saveVarsFile.json",
+            "writeFile": "saveOriginalDoublesVars.json",
+            "replace": "value"
+          }
+        ],
+        "else": [
+          { "name": "io.delete", "file": "saveOriginalDoublesVars.json" },
+          { "name": "io.delete", "file": "saveOriginalDoubles.json" }
+        ]
+      }
+    },
+    "loadOrStartGame",
     {
       "name": "if.equal",
       "param1": "%gameTimeTrial%",
@@ -262,20 +290,32 @@
         { "name": "drawable.delete", "id": "txtTime" },
         { "name": "drawable.delete", "id": "txtTimeP2" }
       ]
-    },
-    {
-      "name": "action.set",
-      "id": "startGame",
-      "action": {
-        "name": "if.equal",
-        "param1": "%gameTimeTrial%",
-        "param2": true,
-        "then": { "name": "level.newGame", "type": "original", "players": 2, "initialLevel": "|gameLevel|", "timeLimit": "3:00" },
-        "else": { "name": "level.newGame", "type": "original", "players": 2, "initialLevel": "|gameLevel|" }
-      }
     }
   ],
-  "load": "level/load.json",
-  "load": "ui/play/pause.json",
-  "load": "ui/play/gameStart.json"
+  "inputEvent": [
+    {
+      "gameInputEvent": "esc",
+      "action": [
+        "saveGame",
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "gameInputEvent": "rotateJewels",
+      "event": "level.rotate"
+    },
+    {
+      "gameInputEvent": "down",
+      "event": "level.down"
+    },
+    {
+      "gameInputEvent": "left",
+      "event": "level.left"
+    },
+    {
+      "gameInputEvent": "right",
+      "event": "level.right"
+    }
+  ]
 }

@@ -7,52 +7,87 @@
         {
           "value": 2,
           "action": {
-            "name": "loadJson",
-            "json": {
-              "refWindowSize": [640, 448],
-              "minWindowSize": [640, 448],
-              "windowSize": [640, 448]
-            }
+            "name": "if.equal",
+            "param1": { "name": "file.exists", "file": "gfx2x/arcade.png" },
+            "param2": false,
+            "then": { "name": "variable.set", "key": "scale", "value": 1 }
           }
         },
         {
           "value": 3,
           "action": {
-            "name": "loadJson",
-            "json": {
-              "refWindowSize": [960, 672],
-              "minWindowSize": [960, 672],
-              "windowSize": [960, 672]
-            }
+            "name": "if.equal",
+            "param1": { "name": "file.exists", "file": "gfx3x/arcade.png" },
+            "param2": false,
+            "then": { "name": "variable.set", "key": "scale", "value": 1 }
           }
         },
         {
           "value": 4,
           "action": {
-            "name": "loadJson",
-            "json": {
-              "refWindowSize": [1280, 896],
-              "minWindowSize": [1280, 896],
-              "windowSize": [1280, 896]
-            }
-          }
-        }
-      ],
-      "default": [
-        { "name": "variable.set", "key": "scale", "value": 1 },
-        {
-          "name": "loadJson",
-          "json": {
-            "refWindowSize": [320, 224],
-            "minWindowSize": [320, 224],
-            "windowSize": [640, 448]
+            "name": "if.equal",
+            "param1": { "name": "file.exists", "file": "gfx4x/arcade.png" },
+            "param2": false,
+            "then": { "name": "variable.set", "key": "scale", "value": 1 }
           }
         }
       ]
     },
+    {
+      "name": "switch",
+      "param": "%scale%",
+      "case": [
+        {
+          "value": 1,
+          "action": [
+            { "name": "game.setProperty", "property": "refSize", "value": [320, 224] },
+            { "name": "game.setProperty", "property": "minSize", "value": [320, 224] }
+          ]
+        },
+        {
+          "value": 2,
+          "action": [
+            { "name": "game.setProperty", "property": "refSize", "value": [640, 448] },
+            { "name": "game.setProperty", "property": "minSize", "value": [640, 448] }
+          ]
+        },
+        {
+          "value": 3,
+          "action": [
+            { "name": "game.setProperty", "property": "refSize", "value": [960, 672] },
+            { "name": "game.setProperty", "property": "minSize", "value": [960, 672] }
+          ]
+        },
+        {
+          "value": 4,
+          "action": [
+            { "name": "game.setProperty", "property": "refSize", "value": [1280, 896] },
+            { "name": "game.setProperty", "property": "minSize", "value": [1280, 896] }
+          ]
+        }
+      ],
+      "default": [
+        { "name": "variable.set", "key": "scale", "value": 2 },
+        { "name": "game.setProperty", "property": "refSize", "value": [640, 448] },
+        { "name": "game.setProperty", "property": "minSize", "value": [640, 448] }
+      ]
+    },
     { "name": "variable.setIfNull", "key": "shader", "value": "default" },
+    { "name": "variable.setIfNull", "key": "bgm", "value": true },
     { "name": "variable.setIfNull", "key": "difficultyArcade", "value": "normal" },
-    { "name": "variable.setIfNull", "key": "seNo", "value": 1 }
+    { "name": "variable.setIfNull", "key": "seNo", "value": 1 },
+    { "name": "variable.setIfNull", "key": "gameBGM", "value": "clotho" },
+    { "name": "variable.setIfNull", "key": "gameClass", "value": "novice" },
+    { "name": "variable.setIfNull", "key": "gameClassP2", "value": "novice" },
+    { "name": "variable.setIfNull", "key": "gameHeight", "value": 2 },
+    { "name": "variable.setIfNull", "key": "gameHeightP2", "value": 2 },
+    { "name": "variable.setIfNull", "key": "gameLevel", "value": 0 },
+    { "name": "variable.setIfNull", "key": "gameLevelP2", "value": 0 },
+    { "name": "variable.setIfNull", "key": "gameMatch", "value": false },
+    { "name": "variable.setIfNull", "key": "gameTimeTrial", "value": false },
+    { "name": "variable.setIfNull", "key": "gameType", "value": "original" },
+    { "name": "variable.setIfNull", "key": "player2", "value": false },
+    { "name": "variable.setIfNull", "key": "doubles", "value": false }
   ],
   "replaceVars": "value",
   "load": "res/shaders/|shader|.json"

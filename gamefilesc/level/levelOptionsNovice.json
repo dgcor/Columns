@@ -9,7 +9,7 @@
           "blue",
           "orange"
         ],
-        "dropSpeed": 525
+        "dropSpeed": 500
       },
       { "dropSpeed": 140 },
       { "dropSpeed": 100 },

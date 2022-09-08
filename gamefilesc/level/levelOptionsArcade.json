@@ -11,7 +11,7 @@
           "green",
           "purple"
         ],
-        "dropSpeed": 525,
+        "dropSpeed": 500,
         "magicJewels": 1,
         "magicHeight": 9,
         "hints": true

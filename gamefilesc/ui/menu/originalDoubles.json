@@ -1,16 +1,23 @@
 {
   "action": [
+    { "name": "variable.set", "key": "gameType", "value": "original" },
+    { "name": "variable.set", "key": "player2", "value": false },
+    { "name": "variable.set", "key": "doubles", "value": true },
+    { "name": "load", "file": "saveOriginalDoublesVars.json" },
     {
       "name": "action.set",
-      "id": "newGame",
+      "id": "playGame",
       "action": [
         { "name": "resource.popAll", "id": "menu" },
         { "name": "load", "file": "ui/play/originalDoubles.json" }
       ]
     },
-    { "name": "variable.set", "key": "gameType", "value": "original" },
-    { "name": "variable.set", "key": "player2", "value": false },
-    { "name": "variable.set", "key": "doubles", "value": true }
-  ],
-  "load": "ui/menu/menuOriginal.json"
+    {
+      "name": "if.equal",
+      "param1": { "name": "file.exists", "file": "saveOriginalDoubles.json" },
+      "param2": true,
+      "then": "playGame",
+      "else": { "name": "load", "file": "ui/menu/menuOriginal.json" }
+    }
+  ]
 }

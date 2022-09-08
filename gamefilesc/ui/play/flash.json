@@ -4,31 +4,6 @@
     "id": "play",
     "ignorePrevious": true
   },
-  "inputEvent": [
-    {
-      "key": "esc",
-      "action": [
-        { "name": "resource.pop" },
-        { "name": "event.deleteAll" }
-      ]
-    },
-    {
-      "key": [" ", "rshift"],
-      "action": { "name": "level.rotateJewels" }
-    },
-    {
-      "key": "down",
-      "event": "level.down"
-    },
-    {
-      "key": "left",
-      "event": "level.left"
-    },
-    {
-      "key": "right",
-      "event": "level.right"
-    }
-  ],
   "replaceVars": "value",
   "texture": { "file": "gfx|scale|x/flash1p.png" },
   "button": {
@@ -91,7 +66,54 @@
       "horizontalAlign": "right"
     }
   ],
+  "replaceVars": false,
+  "load": "level/load.json",
+  "load": "ui/play/pause.json",
   "action": [
+    {
+      "replaceVars": "value",
+      "name": "action.set",
+      "id": "newGame",
+      "action": { "name": "level.newGame", "type": "flash", "height": "|gameHeight|" }
+    },
+    {
+      "name": "action.set",
+      "id": "loadOrStartGame",
+      "action": {
+        "name": "if.equal",
+        "param1": { "name": "file.exists", "file": "saveFlash.json" },
+        "param2": true,
+        "then": [
+          { "name": "level.loadGame", "file": "saveFlash.json" },
+          "loadAndPlayBGM",
+          "pauseGame"
+        ],
+        "else": { "name": "load", "file": "ui/play/gameStart.json" }
+      }
+    },
+    {
+      "name": "action.set",
+      "id": "saveGame",
+      "action": {
+        "name": "if.equal",
+        "param1": "%level.gameOver%",
+        "param2": false,
+        "then": [
+          { "name": "level.saveGame", "file": "saveFlash.json" },
+          {
+            "name": "file.copy",
+            "file": "level/saveVarsFile.json",
+            "writeFile": "saveFlashVars.json",
+            "replace": "value"
+          }
+        ],
+        "else": [
+          { "name": "io.delete", "file": "saveFlashVars.json" },
+          { "name": "io.delete", "file": "saveFlash.json" }
+        ]
+      }
+    },
+    "loadOrStartGame",
     {
       "name": "switch",
       "param": "%gameClass%",
@@ -100,14 +122,32 @@
         { "value": "amateur", "action": { "name": "text.setText", "id": "txtClass", "text": "ama" } },
         { "value": "pro", "action": { "name": "text.setText", "id": "txtClass", "text": "pro" } }
       ]
-    },
-    {
-      "name": "action.set",
-      "id": "startGame",
-      "action": { "name": "level.newGame", "type": "flash", "height": "|gameHeight|" }
     }
   ],
-  "load": "level/load.json",
-  "load": "ui/play/pause.json",
-  "load": "ui/play/gameStart.json"
+  "inputEvent": [
+    {
+      "gameInputEvent": "esc",
+      "action": [
+        "saveGame",
+        { "name": "resource.pop" },
+        { "name": "event.deleteAll" }
+      ]
+    },
+    {
+      "gameInputEvent": "rotateJewels",
+      "event": "level.rotate"
+    },
+    {
+      "gameInputEvent": "down",
+      "event": "level.down"
+    },
+    {
+      "gameInputEvent": "left",
+      "event": "level.left"
+    },
+    {
+      "gameInputEvent": "right",
+      "event": "level.right"
+    }
+  ]
 }

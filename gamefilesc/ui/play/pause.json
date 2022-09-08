@@ -34,6 +34,10 @@
       ]
     }
   },
+  "inputEvent": {
+    "gameInputEvent": "start",
+    "action": "pauseGame"
+  },
   "panel": {
     "id": "pauseOverlay",
     "visible": false

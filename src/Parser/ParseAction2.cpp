@@ -1,62 +1,46 @@
 #include "ParseAction2.h"
-#include "Actions/ActLevel.h"
-#include "Parser/Utils/ParseUtils.h"
-#include "Utils/Utils.h"
+#include "Parser/Actions/ParseLevelActions.h"
+#include "Utils/StringHash.h"
 
 namespace Parser2
 {
-	using namespace Parser;
 	using namespace rapidjson;
 
-	std::shared_ptr<Action> parseActionElem(Game& game,
-		uint16_t nameHash16, const Value& elem)
+	std::shared_ptr<Action> parseActionElem(Game& game, uint16_t nameHash16, const Value& elem)
 	{
 		switch (nameHash16)
 		{
 		case str2int16("level.addHighScore"):
 		{
-			return std::make_shared<ActLevelAddHighScore>(
-				getStringViewKey(elem, "level"),
-				getStringViewKey(elem, "scoreName"),
-				getIntKey(elem, "scoreLevel"),
-				getInt64Key(elem, "score"),
-				getIntKey(elem, "jewels"),
-				getTimeKey(elem, "time"));
+			return Actions::parseLevelAddHighScore(elem);
+		}
+		case str2int16("level.loadGame"):
+		{
+			return Actions::parseLevelLoadGame(elem);
 		}
 		case str2int16("level.moveJewels"):
 		{
-			return std::make_shared<ActLevelMoveJewels>(
-				getStringViewKey(elem, "level"),
-				getVector2iKey<PairInt16>(elem, "offset"),
-				getBoolKey(elem, "addDropPoints", true));
+			return Actions::parseLevelMoveJewels(elem);
 		}
 		case str2int16("level.newGame"):
 		{
-			return std::make_shared<ActLevelNewGame>(
-				getStringViewKey(elem, "level"),
-				getStringViewKey(elem, "type"),
-				getTimeKey(elem, "timeLimit"),
-				(int16_t)getIntKey(elem, "players"),
-				(int16_t)getIntKey(elem, "height"),
-				getIntKey(elem, "initialLevel"));
+			return Actions::parseLevelNewGame(elem);
 		}
 		case str2int16("level.pause"):
 		{
-			return std::make_shared<ActLevelPause>(
-				getStringViewKey(elem, "level"),
-				getBoolKey(elem, "pause", true));
+			return Actions::parseLevelPause(elem);
 		}
 		case str2int16("level.rotateJewels"):
 		{
-			return std::make_shared<ActLevelRotateJewels>(
-				getStringViewKey(elem, "level"),
-				getBoolKey(elem, "reverse"));
+			return Actions::parseLevelRotateJewels(elem);
+		}
+		case str2int16("level.saveGame"):
+		{
+			return Actions::parseLevelSaveGame(elem);
 		}
 		case str2int16("level.setShader"):
 		{
-			return std::make_shared<ActLevelSetShader>(
-				getStringViewKey(elem, "level"),
-				getStringViewKey(elem, "shader"));
+			return Actions::parseLevelSetShader(elem);
 		}
 		default:
 			return nullptr;

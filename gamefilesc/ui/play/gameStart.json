@@ -1,12 +1,12 @@
 {
   "load": "bgm/start.json",
   "action": [
-    "startGame",
+    "newGame",
     { "name": "audio.play", "id": "start" },
     { "name": "level.pause", "pause": true }
   ],
   "inputEvent": {
-    "key": "enter",
+    "gameInputEvent": "start",
     "action": null
   },
   "replaceVars": "value",
@@ -22,11 +22,10 @@
     "action": [
       { "name": "level.pause", "pause": false },
       { "name": "drawable.delete", "id": "txtGameStart" },
-      { "name": "load", "file": "bgm/|gameBGM|.json" },
-      { "name": "audio.play", "id": "main" },
+      "loadAndPlayBGM",
       { "name": "loadJson", "json": {
           "inputEvent": {
-            "key": "enter",
+            "gameInputEvent": "enter",
             "action": "pauseGame"
           }
         }

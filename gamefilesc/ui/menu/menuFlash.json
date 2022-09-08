@@ -7,43 +7,43 @@
   "load": "ui/menu/commonFlash.json",
   "inputEvent": [
     {
-      "key": "esc",
+      "gameInputEvent": "esc",
       "action": { "name": "resource.pop" }
     },
     {
-      "key": "enter",
-      "action": "newGame"
+      "gameInputEvent": "enter",
+      "action": "playGame"
     },
     {
-      "key": "left",
+      "gameInputEvent": "left",
       "action": "prevOptionFlash"
     },
     {
-      "key": "right",
+      "gameInputEvent": "right",
       "action": "nextOptionFlash"
     },
     {
-      "key": "up",
+      "gameInputEvent": "up",
       "action": "upOptionFlash"
     },
     {
-      "key": "down",
+      "gameInputEvent": "down",
       "action": "downOptionFlash"
     },
     {
-      "key": "a",
+      "gameInputEvent": "left2",
       "action": "prevOptionFlashP2"
     },
     {
-      "key": "d",
+      "gameInputEvent": "right2",
       "action": "nextOptionFlashP2"
     },
     {
-      "key": "w",
+      "gameInputEvent": "up2",
       "action": "upOptionFlashP2"
     },
     {
-      "key": "s",
+      "gameInputEvent": "down2",
       "action": "downOptionFlashP2"
     }
   ],
