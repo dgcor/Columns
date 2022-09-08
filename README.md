@@ -53,6 +53,6 @@ See how to build in [BUILD.txt](BUILD.txt).
 
 ### Getting original assets
 
-Clone this repository, go to `Actions` and manually run the `Package_gamefiles` workflow.  
+Fork this repository, go to `Actions` and manually run the `Package_gamefiles` workflow.  
 An artifact (`gamefilesc.zip`) will be created with the original assets.  
 Extract that archive over the `gamefilesc` folder or delete the `gamefilesc` folder (Columns will use the zip instead).
