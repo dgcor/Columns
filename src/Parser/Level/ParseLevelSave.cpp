@@ -42,8 +42,8 @@ namespace Parser
 
 		levelSave.state = (LevelState)getIntKey(elem, "state");
 		levelSave.flashGame = getBoolKey(elem, "flash");
-		levelSave.timer = getTimeKey(elem, "timer");
-		levelSave.timeLimit = getTimeKey(elem, "timeLimit");
+		levelSave.timer = getTimeUKey(elem, "timer");
+		levelSave.timeLimit = getTimeUKey(elem, "timeLimit");
 		levelSave.chain = getUIntKey(elem, "chain");
 
 		levelSave.playerIdx = getUIntKey(elem, "playerIndex");

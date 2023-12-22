@@ -1,4 +1,4 @@
-Diabolika uses the zLib license.
+Columns uses the zLib license.
 
 A part of the BitmapFont class is based on a bitmap font implementation for SDL
 by Lazy Foo' Productions. The license is incompatible with GPL like licenses.

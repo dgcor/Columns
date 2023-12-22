@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <SFML/System/Time.hpp>
 #include <string>
 #include "Utils/UnorderedStringMap.h"

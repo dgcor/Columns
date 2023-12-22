@@ -8,6 +8,8 @@
 class LevelScoreManager
 {
 private:
+	static constexpr size_t MaxSize = 10;
+
 	std::vector<LevelScore> levelScores;
 
 	void updateScores();

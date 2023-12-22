@@ -72,13 +72,13 @@ bool LevelUIObject::getProperty(const Level& level, const std::string_view prop,
 		var = Variable(level.pause);
 		return true;
 	case str2int16("timer"):
-		var = Variable(GameUtils::getTime(level.gameState.timer, props.second, true));
+		var = Variable(GameUtils::getTime(level.gameState.timer, props.second));
 		return true;
 	case str2int16("timeLimit"):
-		var = Variable(GameUtils::getTime(level.gameState.timeLimit, props.second));
+		var = Variable(GameUtils::getTime(level.gameState.timeLimit, props.second, true));
 		return true;
 	case str2int16("timeLeft"):
-		var = Variable(GameUtils::getTime(level.gameState.getTimeLeft(), props.second));
+		var = Variable(GameUtils::getTime(level.gameState.getTimeLeft(), props.second, true));
 		return true;
 	case str2int16("timeTrial"):
 		var = Variable(level.gameState.isTimeTrial());

@@ -23,9 +23,9 @@ namespace Parser
 			options.magicJewels += (int16_t)getIntKey(val, "magicJewels");
 			options.magicHeight = (int16_t)getIntKey(val, "magicHeight", options.magicHeight);
 			options.hints = getBoolKey(val, "hints", options.hints);
-			options.dropSpeed = getTimeKey(val, "dropSpeed", options.dropSpeed);
-			options.timeoutSpeed = getTimeKey(val, "timeoutSpeed", options.timeoutSpeed);
-			options.updateScoreSpeed = getTimeKey(val, "updateScoreSpeed", options.updateScoreSpeed);
+			options.dropSpeed = getTimeUKey(val, "dropSpeed", options.dropSpeed);
+			options.timeoutSpeed = getTimeUKey(val, "timeoutSpeed", options.timeoutSpeed);
+			options.updateScoreSpeed = getTimeUKey(val, "updateScoreSpeed", options.updateScoreSpeed);
 
 			if (isValidArray(val, "jewels") == true)
 			{

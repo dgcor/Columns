@@ -7,8 +7,17 @@ class LevelBoard
 {
 private:
 	std::vector<LevelCell> cells;
+
+	// size of cells. height = board height + columnHeight
 	PairInt16 size;
 
+	// visible board height
+	PairInt16 visibleSize;
+
+	// height of jewel column
+	int16_t columnHeight{ 3 };
+
+	// size of single jewel width/height
 	float tileSize{ 0 };
 
 public:
@@ -26,9 +35,15 @@ public:
 	auto crend() const noexcept { return cells.crend(); }
 
 	void Init();
-	void Init(PairInt16 size_);
+	void Init(PairInt16 size_, int16_t columnHeight_);
 
+	// board height + jewelSize
 	const auto& Size() const noexcept { return size; }
+
+	const auto& VisibleSize() const noexcept { return visibleSize; }
+
+	// size of jewel column
+	auto ColumnHeight() const noexcept { return columnHeight; }
 
 	auto TileSize() const noexcept { return tileSize; }
 	void TileSize(float tileSize_) noexcept { tileSize = tileSize_; }
@@ -53,4 +68,7 @@ public:
 	bool deleteJewel(const std::shared_ptr<Jewel>& jewel);
 	bool deleteJewel(PairFloat boardPos);
 	Jewel* moveJewel(PairFloat oldPos, PairFloat newPos);
+
+	// true if there are jewels above visible area
+	bool isGameOver() const;
 };

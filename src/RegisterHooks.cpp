@@ -8,8 +8,8 @@ namespace Hooks
 {
 	void registerHooks()
 	{
-		Hooks::ParseDocumentElem = Parser2::parseDocumentElem;
-		Hooks::ParseActionElem = Parser2::parseActionElem;
+		ParseDocumentElem = Parser2::parseDocumentElem;
+		ParseActionElem = Parser2::parseActionElem;
 
 		Game::DefaultSizeX = 320;
 		Game::DefaultSizeY = 224;

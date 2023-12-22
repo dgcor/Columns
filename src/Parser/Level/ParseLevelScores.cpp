@@ -16,7 +16,7 @@ namespace Parser
 			score.level = getIntKey(val, "level");
 			score.score = getInt64Key(val, "score");
 			score.jewels = getIntKey(val, "jewels");
-			score.time = getTimeKey(val, "time");
+			score.time = getTimeUKey(val, "time");
 			scores.push_back(score);
 		}
 		scoreManager.set(scores);

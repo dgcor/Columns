@@ -6,6 +6,7 @@
 
 void LevelDraw::setAnimationPosition(const Level& level, Animation& anim, PairFloat boardPos)
 {
+	boardPos.y -= level.board.ColumnHeight();
 	auto animSize = anim.Size();
 	auto drawCoord = level.board.toDrawCoord(boardPos);
 	drawCoord.x = drawCoord.x - animSize.x + level.board.TileSize();
@@ -52,7 +53,7 @@ void LevelDraw::draw(const Level& level, const Game& game, sf::RenderTarget& tar
 
 	level.surface.clear(sf::Color::Transparent);
 
-	for (int16_t y = 0; y < level.board.Size().y; y++)
+	for (int16_t y = level.board.ColumnHeight(); y < level.board.Size().y; y++)
 	{
 		for (int16_t x = 0; x < level.board.Size().x; x++)
 		{
@@ -60,7 +61,7 @@ void LevelDraw::draw(const Level& level, const Game& game, sf::RenderTarget& tar
 			level.surface.draw(game, cell.tile);
 		}
 	}
-	for (int16_t y = 0; y < level.board.Size().y; y++)
+	for (int16_t y = level.board.ColumnHeight(); y < level.board.Size().y; y++)
 	{
 		for (int16_t x = 0; x < level.board.Size().x; x++)
 		{

@@ -15,7 +15,7 @@ namespace Parser2::Actions
 			getIntKey(elem, "scoreLevel"),
 			getInt64Key(elem, "score"),
 			getIntKey(elem, "jewels"),
-			getTimeKey(elem, "time"));
+			getTimeUKey(elem, "time"));
 	}
 
 	std::shared_ptr<Action> parseLevelLoadGame(const Value& elem)
@@ -38,7 +38,7 @@ namespace Parser2::Actions
 		return std::make_shared<ActLevelNewGame>(
 			getStringViewKey(elem, "level"),
 			getStringViewKey(elem, "type"),
-			getTimeKey(elem, "timeLimit"),
+			getTimeUKey(elem, "timeLimit"),
 			(int16_t)getIntKey(elem, "players"),
 			(int16_t)getIntKey(elem, "height"),
 			getIntKey(elem, "initialLevel"));

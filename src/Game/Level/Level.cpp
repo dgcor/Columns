@@ -12,15 +12,7 @@ Level::Level(Game& game, const std::shared_ptr<TexturePack>& tilesTexturePack_,
 	PairInt16 boardSize_, float tileSize_) : tilesTexturePack(tilesTexturePack_),
 	selectTexturePack(selectTexturePack_), highlightTexturePack(highlightTexturePack_)
 {
-	if (boardSize_.x < 4 || boardSize_.x > 100 ||
-		boardSize_.y < 4 || boardSize_.y > 100)
-	{
-		board.Init({ 6, 13 });
-	}
-	else
-	{
-		board.Init(boardSize_);
-	}
+	board.Init(boardSize_, 3);
 
 	playerManager.setStartPosition(0, board.Size().x / 2 - 1);
 	playerManager.setStartPosition(1, board.Size().x / 2);
@@ -53,8 +45,8 @@ Level::Level(Game& game, const std::shared_ptr<TexturePack>& tilesTexturePack_,
 	highlightAnim.Visible(false);
 
 	surface.Size(sf::Vector2f(
-		(float)board.Size().x * board.TileSize(),
-		(float)board.Size().y * board.TileSize()
+		(float)board.VisibleSize().x * board.TileSize(),
+		(float)board.VisibleSize().y * board.TileSize()
 	));
 	surface.setCenter();
 	surface.init(game);
@@ -208,7 +200,7 @@ void Level::initGame()
 					cell.tile.setTexture(ti);
 				}
 			}
-			cell.tile.Position(board.toDrawCoord(x, y));
+			cell.tile.Position(board.toDrawCoord(x, y - board.ColumnHeight()));
 			board.set(x, y, std::move(cell));
 		}
 	}
@@ -238,7 +230,7 @@ void Level::newGame(const std::string_view gameType_, sf::Time timeLimit_,
 	{
 		gameState.flashGame = false;
 	}
-	height_ = std::clamp(height_, (int16_t)0, (int16_t)(board.Size().y - 3));
+	height_ = std::clamp(height_, (int16_t)0, (int16_t)(board.VisibleSize().y - board.ColumnHeight()));
 	gameState.timer = {};
 	gameState.timeLimit = timeLimit_ >= sf::Time::Zero ? timeLimit_ : sf::Time::Zero;
 	numPlayers = std::clamp(numPlayers, (int16_t)1, (int16_t)2);
@@ -390,41 +382,41 @@ std::shared_ptr<Jewel> Level::makeRandomJewel() const
 	return std::make_shared<Jewel>(it->second.get());
 }
 
-Jewels Level::makeRandomJewels(int size_) const
+Jewels Level::makeRandomJewels(int height_) const
 {
 	Jewels jewels;
 	if (jewelsClasses.empty() == true)
 	{
 		return jewels;
 	}
-	PairFloat boardPos((float)playerManager.StartPosition(), -1.f);
-	while (size_ > 0)
+	PairFloat boardPos((float)playerManager.StartPosition(), (float)board.ColumnHeight() - 1.f);
+	while (height_ > 0)
 	{
 		auto jewel = makeRandomJewel();
 		jewel->BoardPosition(boardPos);
 		LevelDraw::setAnimationPosition(*this, *jewel, boardPos);
 		jewels.push_back(std::move(jewel));
-		size_--;
+		height_--;
 		boardPos.y--;
 	}
 	return jewels;
 }
 
-Jewels Level::makeMagicJewels(int size_) const
+Jewels Level::makeMagicJewels(int height_) const
 {
 	Jewels jewels;
 	if (magicJewelClass == nullptr)
 	{
 		return jewels;
 	}
-	PairFloat boardPos((float)playerManager.StartPosition(), -1.f);
-	while (size_ > 0)
+	PairFloat boardPos((float)playerManager.StartPosition(), (float)board.ColumnHeight() - 1.f);
+	while (height_ > 0)
 	{
 		auto jewel = std::make_shared<Jewel>(magicJewelClass);
 		jewel->BoardPosition(boardPos);
 		LevelDraw::setAnimationPosition(*this, *jewel, boardPos);
 		jewels.push_back(std::move(jewel));
-		size_--;
+		height_--;
 		boardPos.y--;
 	}
 	return jewels;
@@ -467,6 +459,10 @@ void Level::onNextRound()
 
 void Level::onAddJewels(Game& game)
 {
+	if (board.isGameOver() == true)
+	{
+		doGameOver(game);
+	}
 	if (gameState.chain > 0)
 	{
 		gameState.chain = 0;
@@ -479,14 +475,14 @@ void Level::onAddJewels(Game& game)
 		{
 			if (Random::get(4) == 0)
 			{
-				gameState.currentJewels = makeMagicJewels(3);
+				gameState.currentJewels = makeMagicJewels(board.ColumnHeight());
 				Plr().magicJewelsUsed++;
 				addedMagicJewel = true;
 			}
 		}
 		if (addedMagicJewel == false)
 		{
-			gameState.currentJewels = makeRandomJewels(3);
+			gameState.currentJewels = makeRandomJewels(board.ColumnHeight());
 			if (Plr().options.hints == true)
 			{
 				doHints();
@@ -521,11 +517,6 @@ void Level::onAddJewels(Game& game)
 	}
 	if (generateNew == true)
 	{
-		if (board.isCoordValid(gameState.currentJewels.back()->BoardPosition()) == false)
-		{
-			doGameOver(game);
-			return;
-		}
 		for (auto& jewel : gameState.currentJewels)
 		{
 			auto boardPos = jewel->BoardPosition();
@@ -627,6 +618,11 @@ void Level::doHints()
 
 bool Level::setDelete(Jewel& jewel)
 {
+	// don't remove jewels outside visible area
+	if (jewel.BoardPosition().y < (float)board.ColumnHeight())
+	{
+		return true;
+	}
 	jewel.Delete();
 	updateLogic(jewel);
 	return true;
@@ -634,6 +630,11 @@ bool Level::setDelete(Jewel& jewel)
 
 bool Level::setDeleteAndUpdatePoints(Jewel& jewel)
 {
+	// don't remove jewels outside visible area
+	if (jewel.BoardPosition().y < (float)board.ColumnHeight())
+	{
+		return true;
+	}
 	if (jewel.Delete() == true)
 	{
 		Plr().jewelsDestroyed++;

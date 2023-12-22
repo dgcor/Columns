@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12.4 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 # use ccache if available
 find_program(CCACHE_PROGRAM ccache)
@@ -7,7 +7,7 @@ if(CCACHE_PROGRAM)
     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
 endif()
 
-project(Columns)
+project(Columns VERSION 1.2.0)
 
 if(IS_DIRECTORY "${PROJECT_SOURCE_DIR}/../DGEngine.core")
     add_subdirectory(${PROJECT_SOURCE_DIR}/../DGEngine.core DGEngine.core)
@@ -15,18 +15,10 @@ else()
     add_subdirectory(DGEngine.core)
 endif()
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake_modules")
-
-if(MOVIE_SUPPORT)
-    find_package(FFmpeg COMPONENTS avcodec avformat avutil swscale)
-endif()
-find_package(PhysFS REQUIRED)
-find_package(SFML 2.6 COMPONENTS audio graphics REQUIRED)
-
-include_directories(src)
+option(DGENGINE_COMPRESS_BINARY "Compress binary" FALSE)
+option(DGENGINE_OPTIMISE "Optimize build" FALSE)
 
 set(SOURCE_FILES
-    src/Main.cpp
     src/RegisterHooks.cpp
     src/RegisterHooks.h
     src/Game/Actions/ActLevel.h
@@ -83,30 +75,51 @@ set(SOURCE_FILES
     src/Parser/Level/ParseLevelScores.h
 )
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+if(DGENGINE_STATIC_CRT AND WIN32)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static")
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    endif()
+endif()
+
+add_library(${PROJECT_NAME}Lib ${SOURCE_FILES})
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -stdlib=libc++)
-    target_link_options(${PROJECT_NAME} PRIVATE -stdlib=libc++)
+    target_compile_options(${PROJECT_NAME}Lib PUBLIC -Wall -stdlib=libc++)
+    target_link_options(${PROJECT_NAME}Lib PUBLIC -stdlib=libc++)
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 11.1)
         message(FATAL_ERROR "GCC version must be at least 11.1!")
     endif()
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wpedantic)
+    target_compile_options(${PROJECT_NAME}Lib PUBLIC -Wall -Wpedantic)
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    target_compile_options(${PROJECT_NAME} PRIVATE /GF /EHsc /W3 /wd4250 /wd4996)
-    target_link_options(${PROJECT_NAME} PRIVATE /OPT:ICF /OPT:REF)
+    target_compile_options(${PROJECT_NAME}Lib PUBLIC /W3 /wd4250 /wd4996)
 endif()
 
-if(FFmpeg_FOUND)
-    include_directories(${FFmpeg_INCLUDES})
-    target_link_libraries(${PROJECT_NAME} ${FFmpeg_LIBRARIES})
+target_include_directories(${PROJECT_NAME}Lib PUBLIC src)
+target_link_libraries(${PROJECT_NAME}Lib PUBLIC DGEngine.core)
+
+add_executable(${PROJECT_NAME} src/Main.cpp)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}Lib)
+
+if(DGENGINE_OPTIMISE)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        target_compile_options(${PROJECT_NAME} PRIVATE -O3)
+        set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE -s)
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        target_compile_options(${PROJECT_NAME} PRIVATE /GF /EHsc)
+        target_link_options(${PROJECT_NAME} PRIVATE /OPT:ICF /OPT:REF)
+    endif()
+    if(DGENGINE_COMPRESS_BINARY)
+        include(FindSelfPackers)
+        if(SELF_PACKER_FOR_EXECUTABLE)
+            ADD_CUSTOM_COMMAND(
+                COMMAND ${SELF_PACKER_FOR_EXECUTABLE} $<TARGET_FILE:${PROJECT_NAME}>
+                ARGS ${SELF_PACKER_FOR_EXECUTABLE_FLAGS} -9q
+                TARGET ${PROJECT_NAME}
+            )
+        endif()
+    endif()
 endif()
-
-include_directories(${PHYSFS_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ${PHYSFS_LIBRARY} sfml-audio sfml-graphics)
-
-target_link_libraries(${PROJECT_NAME} DGEngine.core)
-
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)

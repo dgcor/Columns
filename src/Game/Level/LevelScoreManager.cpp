@@ -39,9 +39,9 @@ void LevelScoreManager::updateScores()
 			return false;
 		}
 	);
-	if (levelScores.size() > 10)
+	if (levelScores.size() > MaxSize)
 	{
-		levelScores.resize(10);
+		levelScores.resize(MaxSize);
 	}
 }
 
@@ -84,7 +84,7 @@ bool LevelScoreManager::getProperty(const std::string_view prop, Variable& var) 
 			var = Variable((int64_t)levelScores[idx].jewels);
 			return true;
 		case str2int16("time"):
-			var = Variable(GameUtils::getTime(levelScores[idx].time, props.second, true));
+			var = Variable(GameUtils::getTime(levelScores[idx].time, props.second));
 			return true;
 		default:
 			return false;
