@@ -1,8 +1,29 @@
 {
-  "audio": {
-    "id": "start",
-    "file": "bgm/02 - Quagmire (Start).ogg",
-    "loop": false,
-    "play": true
+  "action": {
+    "name": "if.equal",
+    "param1": "%game.VGM%",
+    "param2": true,
+    "then": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "start",
+          "file": "bgm/02 - Quagmire (Start).vgz",
+          "loop": false,
+          "play": true
+        }
+      }
+    },
+    "else": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "start",
+          "file": "bgm/02 - Quagmire (Start).ogg",
+          "loop": false,
+          "play": true
+        }
+      }
+    }
   }
 }

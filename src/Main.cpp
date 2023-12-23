@@ -1,4 +1,4 @@
-#include "Game/Game.h"
+#include "Game/Game2.h"
 #include "Game/Utils/CmdLineUtils.h"
 #include "Game/Utils/FileUtils.h"
 #include <iostream>
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
 	try
 	{
-		Game game;
+		Game2 game;
 
 		if (CmdLineUtils::processCmdLine(argc, (const char**)argv) == false)
 		{

@@ -13,6 +13,10 @@ endian uses the BSD license.
 
 https://github.com/steinwurf/endian
 
+Game_Music_Emu uses the LGPL v2.1 license.
+
+https://github.com/libgme/game-music-emu
+
 PhysFS uses the zlib license.
 
 https://icculus.org/physfs/

@@ -1,8 +1,29 @@
 {
-  "audio": {
-    "id": "nameEntry",
-    "file": "bgm/13 - Boy Wonder (Name Entry).ogg",
-    "loop": false,
-    "play": true
+  "action": {
+    "name": "if.equal",
+    "param1": "%game.VGM%",
+    "param2": true,
+    "then": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "nameEntry",
+          "file": "bgm/13 - Boy Wonder (Name Entry).vgz",
+          "loop": false,
+          "play": true
+        }
+      }
+    },
+    "else": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "nameEntry",
+          "file": "bgm/13 - Boy Wonder (Name Entry).ogg",
+          "loop": false,
+          "play": true
+        }
+      }
+    }
   }
 }

@@ -7,7 +7,9 @@ if(CCACHE_PROGRAM)
     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
 endif()
 
-project(Columns VERSION 1.2.0)
+project(Columns VERSION 1.2.1)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake_modules")
 
 if(IS_DIRECTORY "${PROJECT_SOURCE_DIR}/../DGEngine.core")
     add_subdirectory(${PROJECT_SOURCE_DIR}/../DGEngine.core DGEngine.core)
@@ -17,10 +19,20 @@ endif()
 
 option(DGENGINE_COMPRESS_BINARY "Compress binary" FALSE)
 option(DGENGINE_OPTIMISE "Optimize build" FALSE)
+option(DGENGINE_VGM_MUSIC "Add support for VGM sound files" TRUE)
+
+find_package(gme QUIET)
+find_package(ZLIB QUIET)
+
+if(NOT ${gme_FOUND} OR NOT ${ZLIB_FOUND})
+    SET(DGENGINE_VGM_MUSIC FALSE)
+endif()
 
 set(SOURCE_FILES
     src/RegisterHooks.cpp
     src/RegisterHooks.h
+    src/Game/Game2.cpp
+    src/Game/Game2.h
     src/Game/Actions/ActLevel.h
     src/Game/Jewel/Jewel.cpp
     src/Game/Jewel/Jewel.h
@@ -75,6 +87,13 @@ set(SOURCE_FILES
     src/Parser/Level/ParseLevelScores.h
 )
 
+if(DGENGINE_VGM_MUSIC)
+    SET(SOURCE_FILES ${SOURCE_FILES}
+        src/SFML/VGM.cpp
+        src/SFML/VGM.h
+    )
+endif()
+
 if(DGENGINE_STATIC_CRT AND WIN32)
     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static")
@@ -99,6 +118,11 @@ endif()
 
 target_include_directories(${PROJECT_NAME}Lib PUBLIC src)
 target_link_libraries(${PROJECT_NAME}Lib PUBLIC DGEngine.core)
+
+if(DGENGINE_VGM_MUSIC)
+    target_compile_definitions(${PROJECT_NAME}Lib PUBLIC DGENGINE_VGM_MUSIC=1)
+    target_link_libraries(${PROJECT_NAME}Lib PRIVATE gme::gme ZLIB::ZLIB)
+endif()
 
 add_executable(${PROJECT_NAME} src/Main.cpp)
 

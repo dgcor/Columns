@@ -1,8 +1,29 @@
 {
-  "audio": {
-    "id": "main",
-    "file": "bgm/07 - Lathesis.ogg",
-    "loop": true,
-    "play": true
+  "action": {
+    "name": "if.equal",
+    "param1": "%game.VGM%",
+    "param2": true,
+    "then": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "main",
+          "file": "bgm/07 - Lathesis.vgz",
+          "loop": true,
+          "play": true
+        }
+      }
+    },
+    "else": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "main",
+          "file": "bgm/07 - Lathesis.ogg",
+          "loop": true,
+          "play": true
+        }
+      }
+    }
   }
 }

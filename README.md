@@ -10,7 +10,7 @@ Sprites for the original are included in the gamefilesc/gfx*x folders.
 Included upscaled graphics created using [xbrz](https://sourceforge.net/projects/xbrz/).  
 
 To have music, convert the VGM songs to ogg and place them in gamefilesc/bgm  
-To get the original music, see gamefilesc/bgm/readme.txt  
+Alternatively, install the Game_Music_Emu dependency.  
 
 [Getting original assets](#Getting-original-assets)
 
@@ -52,6 +52,8 @@ Columns.AppImage.home    (folder)
 See how to build in [BUILD.txt](BUILD.txt).
 
 ### Getting original assets
+
+(no longer needed)
 
 Fork this repository, go to `Actions` and manually run the `Package_gamefiles` workflow.  
 An artifact (`gamefilesc.zip`) will be created with the original assets.  

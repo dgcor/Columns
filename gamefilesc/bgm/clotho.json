@@ -1,9 +1,31 @@
 {
-  "audio": {
-    "id": "main",
-    "file": "bgm/03 - Clotho.ogg",
-    "loopPoints": { "offset": 0, "length": 89.50 },
-    "loop": true,
-    "play": true
+  "action": {
+    "name": "if.equal",
+    "param1": "%game.VGM%",
+    "param2": true,
+    "then": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "main",
+          "file": "bgm/03 - Clotho.vgz",
+          "loopPoints": { "offset": 0, "length": 89.50 },
+          "loop": true,
+          "play": true
+        }
+      }
+    },
+    "else": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "main",
+          "file": "bgm/03 - Clotho.ogg",
+          "loopPoints": { "offset": 0, "length": 89.50 },
+          "loop": true,
+          "play": true
+        }
+      }
+    }
   }
 }

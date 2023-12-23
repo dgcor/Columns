@@ -4,15 +4,18 @@ To compile in Windows, you can use CMake or open the folder with Visual Studio 2
 
 The easiest way to get the required dependencies is to use vcpkg.
 
-vcpkg install physfs sfml ffmpeg --triplet=x86-windows
-vcpkg install physfs sfml ffmpeg --triplet=x86-windows-static
-vcpkg install physfs sfml ffmpeg --triplet=x64-windows
-vcpkg install physfs sfml ffmpeg --triplet=x64-windows-static
+vcpkg install libgme[core,vgm] physfs sfml ffmpeg --triplet=x86-windows
+vcpkg install libgme[core,vgm] physfs sfml ffmpeg --triplet=x86-windows-static
+vcpkg install libgme[core,vgm] physfs sfml ffmpeg --triplet=x64-windows
+vcpkg install libgme[core,vgm] physfs sfml ffmpeg --triplet=x64-windows-static
 
 There is a custom vcpkg triplet that links ffmpeg dynamically.
 
-vcpkg install physfs sfml ffmpeg --triplet=x86-windows-static --overlay-triplets=vcpkg/triplets
-vcpkg install physfs sfml ffmpeg --triplet=x64-windows-static --overlay-triplets=vcpkg/triplets
+vcpkg install libgme[core,vgm] physfs sfml ffmpeg --triplet=x86-windows-static --overlay-triplets=vcpkg/triplets
+vcpkg install libgme[core,vgm] physfs sfml ffmpeg --triplet=x64-windows-static --overlay-triplets=vcpkg/triplets
+
+Game_Music_Emu - https://github.com/libgme/game-music-emu
+                 optional for VGM music playback support
 
 PhysicsFS - https://icculus.org/physfs
             version >= 2.1
@@ -65,3 +68,4 @@ DGENGINE_FALLBACK_TO_LOWERCASE (TRUE)  Enable falling back to all lowercase name
 DGENGINE_STATIC_CRT            (FALSE) Use static CRT library (Windows)
 DGENGINE_COMPRESS_BINARY       (FALSE) Compress binary with UPX
 DGENGINE_OPTIMISE              (FALSE) Optimize build with compiler flags
+DGENGINE_VGM_MUSIC             (TRUE)  Add support for VGM sound files

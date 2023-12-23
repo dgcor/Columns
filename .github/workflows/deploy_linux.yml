@@ -35,7 +35,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        vcpkg install physfs sfml --triplet=x64-linux
+        vcpkg install libgme[core,vgm] physfs sfml --triplet=x64-linux
 
     - name: Setup Ninja Build
       uses: turtlesec-no/get-ninja@main

@@ -1,8 +1,29 @@
 {
-  "audio": {
-    "id": "select",
-    "file": "bgm/01 - Filthy (Select).ogg",
-    "loop": false,
-    "play": true
+  "action": {
+    "name": "if.equal",
+    "param1": "%game.VGM%",
+    "param2": true,
+    "then": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "select",
+          "file": "bgm/01 - Filthy (Select).vgz",
+          "loop": false,
+          "play": true
+        }
+      }
+    },
+    "else": {
+      "name": "loadJson",
+      "json": {
+        "audio": {
+          "id": "select",
+          "file": "bgm/01 - Filthy (Select).ogg",
+          "loop": false,
+          "play": true
+        }
+      }
+    }
   }
 }
