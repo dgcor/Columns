@@ -52,7 +52,7 @@
       }
     }
   ],
-  "load": "res/mainMenuTextures.json",
+  "load.textures": "res/mainMenuTextures.json",
   "replaceVars": "value",
   "image": {
     "id": "background",
@@ -63,7 +63,7 @@
     "id": "menuPanel",
     "visible": false
   },
-  "image": {
+  "image.menu": {
     "id": "menuImg",
     "panel": "menuPanel",
     "position": ["center", "|$.#scale * 128|"],
@@ -124,5 +124,5 @@
       }
     ]
   },
-  "load": "ui/mainMenuStart.json"
+  "load.start": "ui/mainMenuStart.json"
 }

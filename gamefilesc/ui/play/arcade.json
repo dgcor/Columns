@@ -176,11 +176,11 @@
       "binding": "%level2.jewels%"
     }
   ],
-  "replaceVars": false,
-  "load": "level/loadArcade.json",
-  "load": "ui/play/pause1.json",
-  "load": "ui/play/pause2.json",
-  "action": [
+  "replaceVars.disable": false,
+  "load.level": "level/loadArcade.json",
+  "load.pause1": "ui/play/pause1.json",
+  "load.pause2": "ui/play/pause2.json",
+  "action.game": [
     {
       "name": "action.set",
       "id": "newGame",

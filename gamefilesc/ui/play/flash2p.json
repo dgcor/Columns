@@ -97,11 +97,11 @@
       "horizontalAlign": "right"
     }
   ],
-  "replaceVars": false,
-  "load": "level/load2.json",
-  "load": "ui/play/pause1.json",
-  "load": "ui/play/pause2.json",
-  "action": [
+  "replaceVars.disable": false,
+  "load.level": "level/load2.json",
+  "load.pause1": "ui/play/pause1.json",
+  "load.pause2": "ui/play/pause2.json",
+  "action.game": [
     {
       "replaceVars": "value",
       "name": "action.set",

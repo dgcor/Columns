@@ -48,7 +48,7 @@
     }
   ],
   "replaceVars": "value",
-  "button": {
+  "button.background": {
     "id": "background",
     "anchor": "none",
     "texture": "options",
@@ -254,7 +254,7 @@
       "pause": true
     }
   ],
-  "action": [
+  "action.update": [
     "updateBGM",
     "updateHeight",
     "updateHeightP2",

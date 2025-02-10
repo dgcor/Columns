@@ -172,5 +172,5 @@
       }
     ]
   },
-  "action": { "name": "menu.setFont", "id": "menu", "index": 8, "font": "font1White" }
+  "action.update": { "name": "menu.setFont", "id": "menu", "index": 8, "font": "font1White" }
 }

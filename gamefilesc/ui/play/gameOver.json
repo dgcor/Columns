@@ -1,6 +1,6 @@
 {
-  "load": "bgm/gameOver.json",
-  "load": "ui/play/overlay.json",
+  "load.gameOver": "bgm/gameOver.json",
+  "load.overlay": "ui/play/overlay.json",
   "action": [
     { "name": "audio.stop", "id": "main" },
     { "name": "audio.play", "id": "gameOver" }
@@ -14,5 +14,5 @@
     "anchor": "none",
     "text": "Game Over"
   },
-  "load": "ui/play/pressStart.json"
+  "load.pressStart": "ui/play/pressStart.json"
 }

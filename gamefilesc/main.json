@@ -10,8 +10,8 @@
     "keepAR": true,
     "stretchToFit": true,
     "smoothScreen": true,
-    "load": "settings.json",
-    "load": "res/updateSettings.json",
+    "load.settings": "settings.json",
+    "load.updateSettings": "res/updateSettings.json",
     "init": true
   },
   "action": { "name": "load", "file": "ui/loadMain.json" }

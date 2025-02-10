@@ -679,7 +679,7 @@
     }
   ],
   "replaceVars": "value",
-  "action": [
+  "action.2": [
     {
       "name": "action.set",
       "id": "selectBGMClotho",

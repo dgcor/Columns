@@ -119,10 +119,10 @@
       "binding": "%txtClass.text%"
     }
   ],
-  "replaceVars": false,
-  "load": "level/load.json",
-  "load": "ui/play/pause.json",
-  "action": [
+  "replaceVars.disable": false,
+  "load.level": "level/load.json",
+  "load.pause": "ui/play/pause.json",
+  "action.game": [
     {
       "replaceVars": "value",
       "name": "action.set",
