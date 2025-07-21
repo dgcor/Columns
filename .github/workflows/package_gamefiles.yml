@@ -1,7 +1,6 @@
 name: Package_gamefiles
 
-on:
-  workflow_dispatch:
+on: [workflow_dispatch]
 
 jobs:
   package_gamefiles:
@@ -9,18 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Columns
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
-        sudo apt install -yq --no-install-suggests --no-install-recommends ffmpeg > /dev/null
-
-    - name: Download Columns soundtrack and copy original gamefiles
-      run: |
-        wget -O Columns.zip https://project2612.org/download.php?id=149 -N
-        unzip Columns.zip
-        mv Columns/*.vgz gamefilesc/bgm
-        rm -R Columns
+        sudo apt install -yq --no-install-suggests --no-install-recommends ffmpeg fuse > /dev/null
 
     - name: Install vgmplay
       run: |
@@ -39,7 +31,7 @@ jobs:
       run: 7z a gamefilesc.zip ./gamefilesc/*
 
     - name: Create gamefiles artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: artifact-gamefilesc
         path: gamefilesc.zip

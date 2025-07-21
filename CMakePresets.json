@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 6,
   "configurePresets": [
     {
       "name": "linux-base",
@@ -482,6 +482,29 @@
       "name": "windows-x86-release-publish",
       "configurePreset": "windows-x86-release-publish",
       "displayName": "x86 Release Publish"
+    }
+  ],
+  "packagePresets": [
+    {
+      "name": "linux-x64-release-publish",
+      "configurePreset": "linux-x64-release-publish",
+      "generators": ["ZIP"],
+      "configurations": ["Release"],
+      "packageDirectory": "${sourceDir}/out/package/${presetName}"
+    },
+    {
+      "name": "windows-x64-release-publish",
+      "configurePreset": "windows-x64-release-publish",
+      "generators": ["ZIP"],
+      "configurations": ["Release"],
+      "packageDirectory": "${sourceDir}/out/package/${presetName}"
+    },
+    {
+      "name": "windows-x86-release-publish",
+      "configurePreset": "windows-x86-release-publish",
+      "generators": ["ZIP"],
+      "configurations": ["Release"],
+      "packageDirectory": "${sourceDir}/out/package/${presetName}"
     }
   ]
 }

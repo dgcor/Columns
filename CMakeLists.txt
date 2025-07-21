@@ -102,7 +102,7 @@ if(DGENGINE_STATIC_CRT AND WIN32)
     endif()
 endif()
 
-add_library(${PROJECT_NAME}Lib ${SOURCE_FILES})
+add_library(${PROJECT_NAME}Lib OBJECT ${SOURCE_FILES})
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     target_compile_options(${PROJECT_NAME}Lib PUBLIC -Wall -stdlib=libc++)
@@ -143,7 +143,26 @@ if(DGENGINE_OPTIMISE)
                 COMMAND ${SELF_PACKER_FOR_EXECUTABLE} $<TARGET_FILE:${PROJECT_NAME}>
                 ARGS ${SELF_PACKER_FOR_EXECUTABLE_FLAGS} -9q
                 TARGET ${PROJECT_NAME}
+                POST_BUILD
             )
         endif()
     endif()
 endif()
+
+# create package
+
+install(TARGETS ${PROJECT_NAME} DESTINATION .)
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/gamefilesc" DESTINATION .)
+install(FILES
+    "${PROJECT_SOURCE_DIR}/LICENSE.txt"
+    "${PROJECT_SOURCE_DIR}/LICENSE.Zlib.txt"
+    "${PROJECT_SOURCE_DIR}/main.json"
+    "${PROJECT_SOURCE_DIR}/README.md"
+    DESTINATION .)
+
+set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE.Zlib.txt")
+
+include(CPack)
